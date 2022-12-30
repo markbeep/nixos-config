@@ -47,10 +47,11 @@
     windowManager.i3 = {
 	enable = true;
         extraPackages = with pkgs; [
-   	  dmenu
    	  i3status
    	  i3lock
    	  i3blocks
+          rofi
+          polybar
    	];
       
     };
@@ -99,7 +100,10 @@
     packages = with pkgs; [
       firefox
       discord
+      neofetch
+      htop
     ];
+   shell = pkgs.fish;
   };
 
   # Allow unfree packages
@@ -117,6 +121,7 @@
     docker
     fish
     file
+    git
   ];
 
   virtualisation.docker.enable = true;
