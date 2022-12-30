@@ -8,6 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      <home-manager/nixos>
     ];
 
   # Bootloader.
@@ -97,6 +98,7 @@
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
       firefox
+      discord
     ];
   };
 
@@ -111,16 +113,16 @@
     neovim
     i3
     alacritty
-    git
     vscode
     docker
     fish
+    file
   ];
 
-  programs.git = {
+  virtualisation.docker.enable = true;
+  virtualisation.docker.rootless = {
     enable = true;
-    userName = "Markbeep";
-    userEmail = "mrkswrn@gmail.com";
+    setSocketVariable = true;
   };
 	
   # Some programs need SUID wrappers, can be configured further or are
