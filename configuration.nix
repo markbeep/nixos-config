@@ -102,6 +102,9 @@
       discord
       neofetch
       htop
+      acpilight
+      pulseaudio
+      dunst
     ];
    shell = pkgs.fish;
   };
@@ -122,6 +125,7 @@
     fish
     file
     git
+    xfce.thunar
   ];
 
   virtualisation.docker.enable = true;
@@ -143,6 +147,9 @@
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
 
+  fonts.fonts = with pkgs; [
+    (nerdfonts.override { fonts = ["FiraCode" ]; })
+  ];
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
