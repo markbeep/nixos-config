@@ -105,6 +105,8 @@
       acpilight
       pulseaudio
       dunst
+      killall
+      feh
     ];
    shell = pkgs.fish;
   };
@@ -148,7 +150,7 @@
   # services.openssh.enable = true;
 
   fonts.fonts = with pkgs; [
-    (nerdfonts.override { fonts = ["FiraCode" ]; })
+    (nerdfonts.override { fonts = ["FiraCode" "JetBrainsMono"]; })
   ];
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

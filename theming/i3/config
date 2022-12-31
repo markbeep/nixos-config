@@ -32,8 +32,10 @@ exec xinput set-prop "SYNA1D31:00 06CB:CD48 Touchpad" "libinput Click Method Ena
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex --autostart --environment i3
 
+# background
+exec --no-startup-id feh --bg-scale $HOME/nixos-config/theming/wallpapers/alena-aenami-moon-artwork.jpg
 # autostart polybar
-exec_always --no-startup-id ~/nixos-config/theming/i3/polybar.sh
+exec_always --no-startup-id $HOME/nixos-config/theming/i3/polybar.sh
 
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
