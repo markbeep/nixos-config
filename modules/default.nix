@@ -8,5 +8,6 @@
     ./nvim
     ./polybar
     ./rofi
+    ./vseth
   ];
 }

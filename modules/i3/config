@@ -40,7 +40,7 @@ exec --no-startup-id nm-applet
 # background
 exec --no-startup-id feh --bg-scale $HOME/nixos-config/wallpapers/alena-aenami-moon-artwork.jpg
 # autostart polybar
-exec_always --no-startup-id ./polybar.sh
+exec_always --no-startup-id $HOME/.config/i3/polybar.sh
 
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec brightnessctl set +10% # increase screen brightness
