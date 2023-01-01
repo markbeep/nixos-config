@@ -3,10 +3,11 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { config, pkgs, ... }:
-
+# test
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
       <home-manager/nixos>
     ];
@@ -35,25 +36,25 @@
   # Enable the i3 window manager 
   services.xserver = {
     enable = true;
-    
+
     desktopManager = {
       plasma5.enable = false;
     };
 
     displayManager = {
-        defaultSession = "none+i3";
+      defaultSession = "none+i3";
     };
 
     windowManager.i3 = {
-	enable = true;
-        extraPackages = with pkgs; [
-   	  i3status
-   	  i3lock
-   	  i3blocks
-          rofi
-          polybar
-   	];
-      
+      enable = true;
+      extraPackages = with pkgs; [
+        i3status
+        i3lock
+        i3blocks
+        rofi
+        polybarFull
+      ];
+
     };
   };
 
@@ -97,18 +98,7 @@
     isNormalUser = true;
     description = "Mark";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-      firefox
-      discord
-      neofetch
-      htop
-      acpilight
-      pulseaudio
-      dunst
-      killall
-      feh
-    ];
-   shell = pkgs.fish;
+    shell = pkgs.fish;
   };
 
   # Allow unfree packages
@@ -117,7 +107,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    vim 
+    vim
     wget
     neovim
     i3
@@ -128,14 +118,18 @@
     file
     git
     xfce.thunar
+    home-manager
   ];
+
+  services.gvfs.enable = true;
+  services.tumbler.enable = true;
 
   virtualisation.docker.enable = true;
   virtualisation.docker.rootless = {
     enable = true;
     setSocketVariable = true;
   };
-	
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
@@ -150,7 +144,7 @@
   # services.openssh.enable = true;
 
   fonts.fonts = with pkgs; [
-    (nerdfonts.override { fonts = ["FiraCode" "JetBrainsMono"]; })
+    (nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" ]; })
   ];
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

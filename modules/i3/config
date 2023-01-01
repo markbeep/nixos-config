@@ -28,18 +28,29 @@ bindsym $mod+b exec firefox
 # enables right click on touchpad
 exec xinput set-prop "SYNA1D31:00 06CB:CD48 Touchpad" "libinput Click Method Enabled" 0 1
 
+# enables transparency
+exec_always --no-startup-id picom &
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex --autostart --environment i3
 
+# adds nm-applet
+exec --no-startup-id nm-applet
+
 # background
-exec --no-startup-id feh --bg-scale $HOME/nixos-config/theming/wallpapers/alena-aenami-moon-artwork.jpg
+exec --no-startup-id feh --bg-scale $HOME/nixos-config/wallpapers/alena-aenami-moon-artwork.jpg
 # autostart polybar
-exec_always --no-startup-id $HOME/nixos-config/theming/i3/polybar.sh
+exec_always --no-startup-id ./polybar.sh
 
 # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec brightnessctl set +10% # increase screen brightness
+bindsym XF86MonBrightnessDown exec brightnessctl set 10%- # decrease screen brightness
+
+# disable mouse focus
+focus_follows_mouse no
+
+# switch back to old workspace
+workspace_auto_back_and_forth yes
 
 # Media volume controls
 # bindsym XF86AudioMute exec amixer sset 'Master' toggle
@@ -52,6 +63,9 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightne
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+
+# lock the screen
+bindsym $mod+Escape exec i3lock --nofork -i $HOME/nixos-config/wallpapers/lockscreen.png
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.

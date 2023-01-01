@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Config
+current-context: vis-1-20
+preferences: {}
+contexts:
+- context:
+    cluster: vis-1-20-cluster
+    user: vis-oidc
+  name: vis-1-20
+- context:
+    cluster: mark-home-cluster
+    user: mark
+  name: mark-home
+clusters:
+- cluster:
+    server: https://kube-1-20-oidc.vis.ethz.ch
+  name: vis-1-20-cluster
+- cluster:
+    server: https://server.markc.su
+  name: mark-home-cluster
+users:
+- name: vis-oidc
+  user:
+    exec:
+      apiVersion: client.authentication.k8s.io/v1beta1
+      args:
+      - oidc-login
+      - get-token
+      - --oidc-issuer-url=https://auth.vseth.ethz.ch/auth/realms/VSETH      
+      - --oidc-client-id=vis-kubectl
+      command: kubectl
+      env: null
