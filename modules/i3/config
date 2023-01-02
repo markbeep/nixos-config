@@ -67,6 +67,9 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 # lock the screen
 bindsym $mod+Escape exec i3lock --nofork -i $HOME/nixos-config/wallpapers/lockscreen.png
 
+# screenshot
+bindsym Print exec --no-startup-id flameshot gui
+
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
@@ -86,7 +89,7 @@ floating_modifier $mod
 tiling_drag modifier titlebar
 
 # start a terminal
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec --no-startup-id alacritty
 
 # kill focused window
 bindsym $mod+Shift+q kill

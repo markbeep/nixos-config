@@ -24,7 +24,7 @@
     kubectl
     krew # package manager for kubectl
     (pkgs.libsForQt5.callPackage ~/nixos-config/nixpkgs/sipctl/default.nix { })
-
+    flameshot # screenshot 
 
     # terminal addons
     neofetch

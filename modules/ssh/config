@@ -1,0 +1,30 @@
+# servers / general dev
+Host server.markc.su
+  HostName server.markc.su
+  ForwardAgent yes
+  IdentityFile ~/.ssh/home
+Host github.com
+  PreferredAuthentications publickey
+  IdentityFile ~/.ssh/gitlab
+Host mcsurgay.vsos.ethz.ch
+  PreferredAuthentications publickey
+  IdentityFile ~/.ssh/vsos
+
+Host *.ethz.ch
+  PreferredAuthentications publickey
+  IdentityFile ~/.ssh/gitlab
+
+# CAT/CIT
+Host kasse.vis.ethz.ch kavis.vis.ethz.ch vending-machine-1.vis.ethz.ch vending-machine-2.vis.ethz.ch
+  User pi
+Host *.vis.ethz.ch
+  User vis
+Host compute*.vis.ethz.ch
+  User vis
+  LocalForward 8006 localhost:8006
+Host kube-router-*.vis.ethz.ch
+  User vis
+  LocalForward 10001 localhost:10001
+Host kube-*-master-*.vis.ethz.ch kube-*-worker-*.vis.ethz.ch
+  User vis
+  ProxyJump kube-router-1.vis.ethz.ch
