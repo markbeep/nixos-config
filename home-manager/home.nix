@@ -2,6 +2,7 @@
 
 {
 
+  # specific configurations
   imports = [
     ~/nixos-config/modules
   ];
@@ -9,13 +10,13 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
   home.username = "mark";
   home.homeDirectory = "/home/mark";
+
+  # Allow unfree packages
+  nixpkgs.config.allowUnfree = true;
 
   home.packages = with pkgs; [
     firefox
@@ -32,7 +33,6 @@
     # core
     brightnessctl
     pulseaudio
-    dunst # application selector 
     killall
     feh # background change
     pavucontrol # audio settings
@@ -42,14 +42,30 @@
     imagemagick
     networkmanagerapplet
     compton # allows for transparent applications
+    dunst # notifications 
+    libnotify # send notifications
 
     # coding
+    neovim
+    vscode
+
+    # languages
     python311
     nodejs-16_x
     nil # nix lsp
     nixpkgs-fmt
     yarn
+
+    # fonts
+    noto-fonts
+    noto-fonts-extra
+    liberation_ttf
+    dejavu_fonts
+    (nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" ]; })
   ];
+
+  # enables the fonts to be used
+  fonts.fontconfig.enable = true;
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage

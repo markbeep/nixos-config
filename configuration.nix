@@ -101,24 +101,22 @@
     shell = pkgs.fish;
   };
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
   environment.systemPackages = with pkgs; [
-    vim
-    wget
-    neovim
-    i3
-    alacritty
-    vscode
-    docker
-    fish
-    file
-    git
-    xfce.thunar
+    # essentials
     home-manager
+    wget
+    i3
+    file
+    xfce.thunar
+
+    # terminal
+    fish
+    alacritty
+
+    # developing
+    git
+    vim
+    docker
   ];
 
   services.gvfs.enable = true;
@@ -143,9 +141,6 @@
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
 
-  fonts.fonts = with pkgs; [
-    (nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" ]; })
-  ];
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];

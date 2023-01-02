@@ -1,6 +1,7 @@
 {
   imports = [
     ./alacritty
+    ./dunst
     ./fish
     ./git
     ./i3
