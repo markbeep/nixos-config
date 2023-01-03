@@ -51,10 +51,10 @@
       enable = true;
       extraPackages = with pkgs; [
         i3status
-        i3lock
         i3blocks
         rofi
         polybarFull
+        betterlockscreen
       ];
 
     };
