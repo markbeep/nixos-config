@@ -40,6 +40,9 @@
     pavucontrol # audio settings
     pamixer
     autorandr # modify window sizes
+    bluez
+    bluez-tools # bluetooth
+    unzip
 
     # theming
     imagemagick
@@ -47,6 +50,9 @@
     picom # allows for transparent applications
     dunst # notifications 
     libnotify # send notifications
+    pywal
+    dmenu
+    networkmanager_dmenu
 
     # coding
     neovim
@@ -71,7 +77,11 @@
     liberation_ttf
     dejavu_fonts
     open-sans
-    (nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" ]; })
+    fantasque-sans-mono
+    terminus_font
+    material-icons
+    (nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" "Iosevka" ]; })
+    (pkgs.libsForQt5.callPackage ~/nixos-config/nixpkgs/feather/default.nix { })
   ];
 
   # enables the fonts to be used
