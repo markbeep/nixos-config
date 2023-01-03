@@ -27,6 +27,7 @@
     (pkgs.libsForQt5.callPackage ~/nixos-config/nixpkgs/sipctl/default.nix { })
     flameshot # screenshot 
     okular # pdf viewer
+    nomacs # image viewer
 
     # terminal addons
     neofetch
@@ -50,7 +51,7 @@
     picom # allows for transparent applications
     dunst # notifications 
     libnotify # send notifications
-    pywal
+    pywal # background and color change
     dmenu
     networkmanager_dmenu
 
