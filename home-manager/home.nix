@@ -21,10 +21,12 @@
   home.packages = with pkgs; [
     firefox
     discord
+    slack
     kubectl
     krew # package manager for kubectl
     (pkgs.libsForQt5.callPackage ~/nixos-config/nixpkgs/sipctl/default.nix { })
     flameshot # screenshot 
+    okular # pdf viewer
 
     # terminal addons
     neofetch
@@ -37,11 +39,12 @@
     feh # background change
     pavucontrol # audio settings
     pamixer
+    autorandr # modify window sizes
 
     # theming
     imagemagick
     networkmanagerapplet
-    compton # allows for transparent applications
+    picom # allows for transparent applications
     dunst # notifications 
     libnotify # send notifications
 
@@ -49,12 +52,18 @@
     neovim
     vscode
 
+    # credentials
+    libsecret
+    gnome.gnome-keyring
+    libgnome-keyring
+
     # languages
     python311
     nodejs-16_x
     nil # nix lsp
     nixpkgs-fmt
     yarn
+    go_1_18
 
     # fonts
     noto-fonts
@@ -66,6 +75,15 @@
 
   # enables the fonts to be used
   fonts.fontconfig.enable = true;
+
+  services.gnome-keyring = {
+    enable = true;
+    components = [ "secrets" ];
+  };
+
+  programs.autorandr = {
+    enable = true;
+  };
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
