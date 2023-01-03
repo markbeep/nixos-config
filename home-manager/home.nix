@@ -70,6 +70,7 @@
     noto-fonts-extra
     liberation_ttf
     dejavu_fonts
+    open-sans
     (nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" ]; })
   ];
 
