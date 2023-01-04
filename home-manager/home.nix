@@ -44,6 +44,7 @@
     bluez
     bluez-tools # bluetooth
     unzip
+    wmctrl # used by vscode glassit extension
 
     # theming
     imagemagick

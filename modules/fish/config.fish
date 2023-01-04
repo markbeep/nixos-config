@@ -23,6 +23,4 @@ if status is-interactive
     # sipctl completion fish | source 
 
     set -gx PATH $PATH $HOME/.krew/bin
-
-    cat ~/.cache/wal/sequences
 end
