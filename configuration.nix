@@ -123,8 +123,14 @@
     git
     vim
     docker
+
+    # credentials
+    libsecret
+    gnome.gnome-keyring
+    libgnome-keyring
   ];
 
+  services.gnome.gnome-keyring.enable = true;
   services.gvfs.enable = true;
   services.tumbler.enable = true;
 
