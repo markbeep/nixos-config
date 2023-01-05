@@ -39,10 +39,6 @@
   services.xserver = {
     enable = true;
 
-    desktopManager = {
-      plasma5.enable = false;
-    };
-
     displayManager = {
       defaultSession = "none+i3";
     };
@@ -56,8 +52,13 @@
         polybarFull
         betterlockscreen
       ];
-
     };
+
+    videoDrivers = [ "intel" ];
+    deviceSection = ''
+      Option "DRI" "2"
+      Option "TearFree" "true"
+    '';
   };
 
   # Enable i3blocks to find the correct /etc
@@ -114,6 +115,7 @@
     i3
     file
     xfce.thunar
+    xorg.xf86videointel
 
     # terminal
     fish
@@ -139,6 +141,8 @@
     enable = true;
     setSocketVariable = true;
   };
+
+
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
