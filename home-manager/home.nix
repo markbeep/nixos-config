@@ -80,6 +80,7 @@
       nixpkgs-fmt
       yarn
       go_1_18
+      hugo
 
       # fonts
       noto-fonts

@@ -39,8 +39,15 @@
   services.xserver = {
     enable = true;
 
-    displayManager = {
-      defaultSession = "none+i3";
+    displayManager.lightdm.greeters.mini = {
+      enable = true;
+      user = "mark";
+      extraConfig = ''
+        [greeter]
+        show-password-label = false
+        [greeter-theme]
+        background-image = ""
+      '';
     };
 
     windowManager.i3 = {
@@ -51,6 +58,8 @@
         rofi
         polybarFull
         betterlockscreen
+        xss-lock # to lock on suspend
+        lightdm # display manager
       ];
     };
 

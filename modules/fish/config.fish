@@ -20,7 +20,7 @@ if status is-interactive
     set fish_greeting
     
     kubectl completion fish | source
-    # sipctl completion fish | source 
+    sipctl completion fish | source 
 
     set -gx PATH $PATH $HOME/.krew/bin
 end

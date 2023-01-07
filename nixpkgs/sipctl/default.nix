@@ -20,7 +20,6 @@ stdenv.mkDerivation {
     mkdir -p "$out/bin"
     cp $src "$out/bin/sipctl"
     chmod +x $out/bin/sipctl
-
   '';
 
   meta = with lib; {
