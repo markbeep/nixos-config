@@ -1,0 +1,31 @@
+get namespaces - kubectl get ns
+get names of pod deployments - kubectl get pods -n <pod name>
+get logs of deployment - kubectl logs -n <pod name> <deployment>
+
+recently executed SQL queries from the comsol db:
+SELECT pid, age(clock_timestamp(), query_start), usename, query
+FROM pg_stat_activity
+WHERE query != '<IDLE>' AND query NOT ILIKE '%pg_stat_activity%' AND usename = 'vis_cat_prod_community_solutions_db'
+ORDER BY query_start desc;
+
+kubectl delete application.sip -n vis-cat-prod infoscreen-ui -- remove registered application from wrong "namespace vis-cat-prod"
+sipctl get apps -- list all sipctl apps
+sipctl -n vis-cat-apps register infoscreen-ui -r vseth/1100-fv/1116-vis/cat/sip-vis-cat-apps/infoscreen-ui -- register an app
+sipctl deploy -n vis-cat-apps infoscreen-ui vis-cat-prod/infoscreen-ui -u Auto -i -- deploy an app
+kubectl get keycloakclient -n vis-cat-prod -- list all keycload instances
+kubectl describe keycloakclient -n vis-cat-prod infoscreen-ui-oidc -- get name of keycloak instance
+sipctl update -n vis-cat-prod infoscreen-ui -- force update of an app
+sipctl get deploy -- see deployed stuff
+kubectl edit ingress ampel-admin-ingress  -n production-120 -- change url for (old) deployment
+kubectl logs -n vis-cat-prod infoscreen-backend-deployment-68dc5d75b8-8b9n4 infoscreen-backend-app -- see logs
+kubectl get pods -n production-120 -- see all pods
+kubectl delete pod eventmanager-deployment-d6476c4cc-4txds -n production-120 -- delete pod (for eventmanager update)
+sipctl edit community-solutions -n vis-cat-prod -- edit a deployment (to give it more pods for example)
+kubectl edit deployment drinks-deployment -n production-120 -- Change Coffee Limit during lernphase
+"kubectl exec -it <pod-name> -- bin/bash" -- Interactive terminal on the pod
+
+sipctl delete <namespace/app>
+sipctl unregister -n <namespace> <name> -- namespace "should" be vis-cat-apps
+siptctl get apps -- Get all currently registered apps
+sipctl get deploy -- Get all currently deployed apps
+siptctl delete <name> -- to delete running apps (not really needed)
