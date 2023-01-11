@@ -12,7 +12,15 @@
       <home-manager/nixos>
     ];
 
+  # enable flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  # reduce file size used
+  nix.settings.auto-optimise-store = true;
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 30d";
+  };
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -46,7 +54,7 @@
         [greeter]
         show-password-label = false
         [greeter-theme]
-        background-image = ""
+        background-image = "/home/mark/nixos-config/media/simple-synthwave.jpg"
       '';
     };
 
@@ -63,12 +71,14 @@
       ];
     };
 
+    # removes screen tearing
     videoDrivers = [ "intel" ];
     deviceSection = ''
       Option "DRI" "2"
       Option "TearFree" "true"
     '';
   };
+
 
   # Enable i3blocks to find the correct /etc
   environment.pathsToLink = [ "/libexec" ];
@@ -139,11 +149,23 @@
     libsecret
     gnome.gnome-keyring
     libgnome-keyring
+
+    # custom boot screen
+    (pkgs.libsForQt5.callPackage /home/mark/nixos-config/nixpkgs/adi1090x-plymouth { })
   ];
+
+  # enables custom boot screen
+  boot.plymouth = {
+    enable = true;
+    themePackages = [ (pkgs.libsForQt5.callPackage /home/mark/nixos-config/nixpkgs/adi1090x-plymouth { }) ];
+    theme = "cuts";
+  };
 
   services.gnome.gnome-keyring.enable = true;
   services.gvfs.enable = true;
   services.tumbler.enable = true;
+
+  programs.fish.enable = true;
 
   virtualisation.docker.enable = true;
   virtualisation.docker.rootless = {
