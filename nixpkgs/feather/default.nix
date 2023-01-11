@@ -2,6 +2,7 @@
 
 stdenv.mkDerivation {
   name = "feather";
+  version = "0.0.1";
 
   src = fetchFromGitHub {
     owner = "AT-UI";

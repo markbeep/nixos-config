@@ -1,7 +1,6 @@
 { config, pkgs, ... }:
 
 {
-
   # specific configurations
   imports = [
     ~/nixos-config/modules
@@ -41,10 +40,12 @@
       stremio
       vlc
       ghostscript
+      anki
 
       # terminal addons
       neofetch
       htop
+      pkgsUnstable.nix-direnv
 
       # core
       brightnessctl
@@ -68,10 +69,12 @@
       pywal # background and color change
       dmenu
       networkmanager_dmenu
+      alttab # alt tab menu
 
       # coding
       neovim
       pkgsUnstable.vscode
+      gcc
 
       # languages
       python311
@@ -81,6 +84,7 @@
       yarn
       go_1_18
       hugo
+      gnumake
 
       # fonts
       noto-fonts
@@ -101,6 +105,9 @@
   programs.autorandr = {
     enable = true;
   };
+
+  # programs.direnv.enable = true;
+  # programs.direnv.nix-direnv.enable = true;
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage

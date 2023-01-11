@@ -1,3 +1,3 @@
 autorandr -c
-feh --bg-scale $HOME/nixos-config/wallpapers/delorean.png
+feh --bg-scale $HOME/nixos-config/media/simple-synthwave.jpg
 i3-msg restart

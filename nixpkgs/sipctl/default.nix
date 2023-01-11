@@ -1,17 +1,28 @@
 { lib, stdenv, fetchurl, autoPatchelfHook }:
-
+let
+  # downloads the checksum from the given url
+  getChecksum = url: with builtins;
+    lib.pipe (builtins.fetchurl url) [
+      readFile
+      (split " ")
+      head
+    ];
+in
 stdenv.mkDerivation {
   name = "sipctl";
+  version = "0.0.1";
 
+  # luckily these urls stay consistent
   src = fetchurl {
     url = "https://tools.vseth.ethz.ch/sipctl/linux-amd64/sipctl";
-    sha256 = "e8cf4452365afbde09c64605a42266eb3451168188d9968b0eaa11a22e3b1459";
+    sha256 = getChecksum "https://tools.vseth.ethz.ch/sipctl/linux-amd64/sipctl.checksum";
   };
 
   dontUnpack = true;
   dontConfigure = true;
   dontBuild = true;
 
+  # required for binary to be executable
   nativeBuildInputs = [
     autoPatchelfHook
   ];
