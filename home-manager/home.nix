@@ -59,6 +59,8 @@
       bluez-tools # bluetooth
       unzip
       wmctrl # used by vscode glassit extension
+      arandr # gui for handling multiple monitors
+      dig
 
       # theming
       imagemagick

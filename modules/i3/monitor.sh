@@ -1,3 +1,3 @@
 autorandr -c
-feh --bg-scale $HOME/nixos-config/media/simple-synthwave.jpg
+feh --bg-fill $HOME/nixos-config/media/simple-synthwave.jpg
 i3-msg restart

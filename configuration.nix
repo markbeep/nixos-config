@@ -23,9 +23,17 @@
   };
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
+  # boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
+
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.grub = {
+    enable = true;
+    device = "nodev";
+    useOSProber = true;
+    efiSupport = true;
+  };
 
   networking.hostName = "mark-laptop"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -150,7 +158,11 @@
     gnome.gnome-keyring
     libgnome-keyring
 
+    grub
+    os-prober
+
     # custom boot screen
+    plymouth
     (pkgs.libsForQt5.callPackage /home/mark/nixos-config/nixpkgs/adi1090x-plymouth { })
   ];
 
@@ -160,6 +172,10 @@
     themePackages = [ (pkgs.libsForQt5.callPackage /home/mark/nixos-config/nixpkgs/adi1090x-plymouth { }) ];
     theme = "cuts";
   };
+  boot.kernelParams = [
+    "quiet"
+  ];
+
 
   services.gnome.gnome-keyring.enable = true;
   services.gvfs.enable = true;
@@ -172,8 +188,6 @@
     enable = true;
     setSocketVariable = true;
   };
-
-
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
