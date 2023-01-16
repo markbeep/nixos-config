@@ -40,7 +40,7 @@
       stremio
       vlc
       ghostscript
-      anki
+      anki-bin
 
       # terminal addons
       neofetch
@@ -51,18 +51,18 @@
       brightnessctl
       pulseaudio
       killall
-      feh # background change
       pavucontrol # audio settings
       pamixer
-      autorandr # modify window sizes
       bluez
       bluez-tools # bluetooth
       unzip
       wmctrl # used by vscode glassit extension
+      autorandr # modify window sizes
       arandr # gui for handling multiple monitors
       dig
 
       # theming
+      feh # background change
       imagemagick
       networkmanagerapplet
       picom # allows for transparent applications
@@ -104,12 +104,10 @@
   # enables the fonts to be used
   fonts.fontconfig.enable = true;
 
+  # setup monitors that are already known
   programs.autorandr = {
     enable = true;
   };
-
-  # programs.direnv.enable = true;
-  # programs.direnv.nix-direnv.enable = true;
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage

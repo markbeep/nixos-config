@@ -1,9 +1,4 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { config, pkgs, ... }:
-# test
 {
   imports =
     [
@@ -14,7 +9,8 @@
 
   # enable flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  # reduce file size used
+
+  # reduce file size used & automatic garbage collector
   nix.settings.auto-optimise-store = true;
   nix.gc = {
     automatic = true;
@@ -23,11 +19,8 @@
   };
 
   # Bootloader.
-  # boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
-
-  boot.loader.systemd-boot.enable = true;
   boot.loader.grub = {
     enable = true;
     device = "nodev";
@@ -35,15 +28,18 @@
     efiSupport = true;
   };
 
-  networking.hostName = "mark-laptop"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  networking = {
+    hostName = "mark-laptop";
 
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+    # extra hosts in /etc/hosts file
+    extraHosts =
+      ''
+        127.0.0.1 minio
+      '';
 
-  # Enable networking
-  networking.networkmanager.enable = true;
+    # Enable networking
+    networkmanager.enable = true;
+  };
 
   # Set your time zone.
   time.timeZone = "Europe/Zurich";
@@ -87,7 +83,6 @@
     '';
   };
 
-
   # Enable i3blocks to find the correct /etc
   environment.pathsToLink = [ "/libexec" ];
 
@@ -112,22 +107,15 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
   };
 
-  # Enable touchpad support (enabled default in most desktopManager).
+  # Enable touchpad support
   services.xserver.libinput.enable = true;
 
   # bluetooth
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.mark = {
     isNormalUser = true;
     description = "Mark";
@@ -158,7 +146,9 @@
     gnome.gnome-keyring
     libgnome-keyring
 
+    # grub bootloader
     grub
+    # os-prober required to find PopOS partition
     os-prober
 
     # custom boot screen
@@ -172,41 +162,25 @@
     themePackages = [ (pkgs.libsForQt5.callPackage /home/mark/nixos-config/nixpkgs/adi1090x-plymouth { }) ];
     theme = "cuts";
   };
+  # removes stage 2+ logging on boot-up / shutdown
   boot.kernelParams = [
     "quiet"
   ];
 
-
   services.gnome.gnome-keyring.enable = true;
-  services.gvfs.enable = true;
-  services.tumbler.enable = true;
+
+  # Thunar specific
+  services.gvfs.enable = true; # Mount, trash, and other functionalities
+  services.tumbler.enable = true; # Thumbnail support for images
 
   programs.fish.enable = true;
 
+  # enables docker to work and be run rootless
   virtualisation.docker.enable = true;
   virtualisation.docker.rootless = {
     enable = true;
     setSocketVariable = true;
   };
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
