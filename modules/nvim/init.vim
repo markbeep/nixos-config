@@ -13,7 +13,6 @@ call plug#begin(stdpath('data') . '/plugged')
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'preservim/nerdtree'
-Plug 'dense-analysis/ale'
 Plug 'wakatime/vim-wakatime'
 Plug 'rstacruz/vim-closer'
 Plug 'nvim-lua/plenary.nvim'
@@ -21,7 +20,7 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim'
 Plug 'machakann/vim-sandwich'
-"Plug 'ithub/copilot.vim' | It is installed via git
+Plug 'LnL7/vim-nix'
 
 "Color Themes
 Plug 'kyoz/purify', { 'rtp': 'vim' }

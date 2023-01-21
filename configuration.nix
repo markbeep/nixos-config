@@ -112,6 +112,14 @@
   # Enable touchpad support
   services.xserver.libinput.enable = true;
 
+  # enable signed commits in git
+  services.pcscd.enable = true;
+  programs.gnupg.agent = {
+     enable = true;
+     pinentryFlavor = "curses";
+     enableSSHSupport = true;
+   };
+
   # bluetooth
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
@@ -154,17 +162,23 @@
     # custom boot screen
     plymouth
     (pkgs.libsForQt5.callPackage /home/mark/nixos-config/nixpkgs/adi1090x-plymouth { })
+
+    powertop # optimizes battery usage
+
+    # signed git commits
+    gnupg
+    pinentry-curses
   ];
 
   # enables custom boot screen
   boot.plymouth = {
-    enable = true;
+    enable = false;
     themePackages = [ (pkgs.libsForQt5.callPackage /home/mark/nixos-config/nixpkgs/adi1090x-plymouth { }) ];
     theme = "cuts";
   };
   # removes stage 2+ logging on boot-up / shutdown
   boot.kernelParams = [
-    "quiet"
+    # "quiet"
   ];
 
   services.gnome.gnome-keyring.enable = true;
@@ -181,6 +195,8 @@
     enable = true;
     setSocketVariable = true;
   };
+
+  powerManagement.powertop.enable = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

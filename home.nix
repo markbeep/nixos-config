@@ -74,9 +74,12 @@
       alttab # alt tab menu
 
       # coding
-      neovim
       pkgsUnstable.vscode
       gcc
+      poetry
+      dhall-lsp-server
+      dhall-json
+      dhall
 
       # languages
       python311

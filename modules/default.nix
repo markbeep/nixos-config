@@ -5,6 +5,7 @@
     ./fish
     ./flameshot
     ./git
+    ./gpg
     ./i3
     ./kube
     ./nvim
