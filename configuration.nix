@@ -1,10 +1,13 @@
 { config, pkgs, ... }:
+let
+  home-manager-store = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/master.tar.gz";
+in
 {
   imports =
     [
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      <home-manager/nixos>
+      (import "${home-manager-store}/nixos")
     ];
 
   # enable flakes
