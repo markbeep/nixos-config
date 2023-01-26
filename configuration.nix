@@ -118,10 +118,10 @@ in
   # enable signed commits in git
   services.pcscd.enable = true;
   programs.gnupg.agent = {
-     enable = true;
-     pinentryFlavor = "curses";
-     enableSSHSupport = true;
-   };
+    enable = true;
+    pinentryFlavor = "curses";
+    enableSSHSupport = true;
+  };
 
   # bluetooth
   hardware.bluetooth.enable = true;
@@ -140,7 +140,7 @@ in
     wget
     i3
     file
-    xfce.thunar
+    xfce.thunar # file manager
     xorg.xf86videointel
 
     # terminal

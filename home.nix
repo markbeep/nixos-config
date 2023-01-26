@@ -39,7 +39,6 @@
       nomacs # image viewer
       stremio
       vlc
-      ghostscript
       anki-bin
 
       # terminal addons
@@ -102,6 +101,9 @@
       material-icons
       (nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" "Iosevka" ]; })
       (pkgs.libsForQt5.callPackage ~/nixos-config/nixpkgs/feather/default.nix { })
+
+      # latex
+      texlive.combined.scheme-full
     ];
 
   # enables the fonts to be used
