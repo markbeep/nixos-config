@@ -34,6 +34,7 @@
       kubectl
       krew # package manager for kubectl
       (pkgs.libsForQt5.callPackage ~/nixos-config/nixpkgs/sipctl/default.nix { })
+      (pkgs.libsForQt5.callPackage ~/nixos-config/nixpkgs/servis/default.nix { })
       flameshot # screenshot 
       okular # pdf viewer
       nomacs # image viewer
