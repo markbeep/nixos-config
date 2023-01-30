@@ -321,61 +321,63 @@ font:
 window:
   opacity: 0.8
 
-#selection:
+# selection:
 # This string contains all characters that are used as separators for
 # "semantic words" in Alacritty.
-#semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
+# semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
 # When set to `true`, selected text will be copied to the primary clipboard.
-#save_to_clipboard: false
-#cursor:
+# save_to_clipboard: false
+# cursor:
 # Cursor style
-#style:
+# style:
 # Cursor shape
-#
+
 # Values for `shape`:
 #   - ▇ Block
 #   - _ Underline
 #   - | Beam
-#shape: Block
+# shape: Block
 # Cursor blinking state
-#
+
 # Values for `blinking`:
 #   - Never: Prevent the cursor from ever blinking
 #   - Off: Disable blinking by default
 #   - On: Enable blinking by default
 #   - Always: Force the cursor to always blink
-#blinking: Off
+# blinking: Off
 # Vi mode cursor style
-#
+
 # If the vi mode cursor style is `None` or not specified, it will fall back to
 # the style of the active value of the normal cursor.
-#
+
 # See `cursor.style` for available options.
-#vi_mode_style: None
+# vi_mode_style: None
 # Cursor blinking interval in milliseconds.
-#blink_interval: 750
+# blink_interval: 750
 # If this is `true`, the cursor will be rendered as a hollow box when the
 # window is not focused.
-#unfocused_hollow: true
+# unfocused_hollow: true
 # Thickness of the cursor relative to the cell width as floating point number
 # from `0.0` to `1.0`.
-#thickness: 0.15
+# thickness: 0.15
 # Live config reload (changes require restart)
-#live_config_reload: true
+# live_config_reload: true
 # Shell
-#
+
 # You can set `shell.program` to the path of your favorite shell, e.g.
 # `/bin/fish`. Entries in `shell.args` are passed unmodified as arguments to the
 # shell.
-#
+
 # Default:
 #   - (macOS) /bin/bash --login
 #   - (Linux/BSD) user login shell
 #   - (Windows) powershell
-#shell:
-#  program: /bin/bash
-#  args:
-#    - --login
+shell:
+  program: /run/current-system/sw/bin/fish
+  args:
+    - --login
+    - --init-command
+    - "cat ~/.cache/wal/sequences &"
 # Startup directory
 #
 # Directory the shell is started in. If this is unset, or `None`, the working

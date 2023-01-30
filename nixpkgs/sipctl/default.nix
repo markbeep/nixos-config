@@ -28,9 +28,13 @@ stdenv.mkDerivation {
   ];
 
   installPhase = ''
+    runHook preInstall
+    
     mkdir -p "$out/bin"
     cp $src "$out/bin/sipctl"
     chmod +x $out/bin/sipctl
+    
+    runHook postInstall
   '';
 
   meta = with lib; {
@@ -38,7 +42,7 @@ stdenv.mkDerivation {
     It is meant to support the same tasks as Gatekeeper.";
     homepage = "https://wiki.vseth.ethz.ch/display/0403DE/SIP";
     platforms = platforms.linux;
-    maintainers = [ maintainers.mark ];
+    maintainers = [ maintainers.markbeep ];
   };
 
 }

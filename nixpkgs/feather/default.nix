@@ -12,8 +12,12 @@ stdenv.mkDerivation {
   };
 
   installPhase = ''
+    runHook preInstall
+
     install -D -m 444 src/fonts/feather.ttf -t $out/share/fonts/ttf
     install -D -m 444 src/fonts/feather.woff -t $out/share/fonts/woff
+
+    runHook postInstall
   '';
 
   meta = with lib; {

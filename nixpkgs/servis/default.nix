@@ -18,16 +18,20 @@ stdenv.mkDerivation {
   ];
 
   installPhase = ''
+    runHook preInstall
+    
     mkdir -p "$out/bin"
     cp $src "$out/bin/servis"
     chmod +x $out/bin/servis
+    
+    runHook postInstall
   '';
 
   meta = with lib; {
     description = "Servis is the VIS specific microservice registry.";
     homepage = "https://documentation.vis.ethz.ch/servis.html";
     platforms = platforms.linux;
-    maintainers = [ maintainers.mark ];
+    maintainers = [ maintainers.markbeep ];
   };
 
 }

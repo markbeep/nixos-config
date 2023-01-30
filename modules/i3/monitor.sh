@@ -1,3 +1,2 @@
 autorandr -c
-feh --bg-fill $HOME/nixos-config/media/simple-synthwave.jpg
-i3-msg restart
+wal -s -i $HOME/nixos-config/media/synth-car.jpg

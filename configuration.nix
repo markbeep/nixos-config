@@ -61,7 +61,7 @@ in
         [greeter]
         show-password-label = false
         [greeter-theme]
-        background-image = "/home/mark/nixos-config/media/simple-synthwave.jpg"
+        background-image = "/home/mark/nixos-config/media/synth-car.jpg"
       '';
     };
 
@@ -123,6 +123,9 @@ in
     enableSSHSupport = true;
   };
 
+  # earlyoom (better out of memory management)
+  services.earlyoom.enable = true;
+
   # bluetooth
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
@@ -162,26 +165,13 @@ in
     # os-prober required to find PopOS partition
     os-prober
 
-    # custom boot screen
-    plymouth
-    (pkgs.libsForQt5.callPackage /home/mark/nixos-config/nixpkgs/adi1090x-plymouth { })
+    earlyoom # better control when out of memory
 
     powertop # optimizes battery usage
 
     # signed git commits
     gnupg
     pinentry-curses
-  ];
-
-  # enables custom boot screen
-  boot.plymouth = {
-    enable = false;
-    themePackages = [ (pkgs.libsForQt5.callPackage /home/mark/nixos-config/nixpkgs/adi1090x-plymouth { }) ];
-    theme = "cuts";
-  };
-  # removes stage 2+ logging on boot-up / shutdown
-  boot.kernelParams = [
-    # "quiet"
   ];
 
   services.gnome.gnome-keyring.enable = true;

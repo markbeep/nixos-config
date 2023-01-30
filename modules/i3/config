@@ -10,11 +10,34 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
-set $background "$HOME/nixos-config/media/simple-synthwave.jpg"
+set $background "$HOME/nixos-config/media/synth-car.jpg"
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 # font pango:monospace 10
+
+set_from_resource $fg i3wm.color7 #f0f0f0
+set_from_resource $bg i3wm.color2 #f0f0f0
+set_from_resource $dark i3wm.color0 #f0f0f0
+set_from_resource $grey i3wm.color8 #f0f0f0
+set_from_resource $c1 i3wm.color1 #f0f0f0
+set_from_resource $c3 i3wm.color3 #f0f0f0
+set_from_resource $c4 i3wm.color4 #f0f0f0
+set_from_resource $c5 i3wm.color5 #f0f0f0
+set_from_resource $c6 i3wm.color6 #f0f0f0
+
+# class                 border  backgr. text    indicator child_border
+client.focused          $fg     $fg     $dark   $bg       
+client.focused_inactive $grey   $c5     $dark   $bg       
+client.unfocused        $grey   $grey   $dark   $bg       
+client.urgent           $grey   $bg     $dark   $bg       
+client.placeholder      $grey   $bg     $dark   $bg       
+
+# hide_edge_borders both
+default_border pixel 1
+
+# start rofi (a program launcher)
+bindsym $mod+d exec rofi -no-config -no-lazy-grab -show drun -modi drun -theme ~/.config/polybar/scripts/rofi/launcher.rasi
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -38,8 +61,6 @@ exec --no-startup-id dex --autostart --environment i3
 # adds nm-applet
 exec --no-startup-id nm-applet
 
-# background (needs to additionally be changed in restart.sh)
-exec_always --no-startup-id feh --bg-fill $background
 # autostart polybar
 exec_always --no-startup-id $HOME/.config/i3/polybar.sh
 
@@ -65,8 +86,6 @@ workspace_auto_back_and_forth yes
 # screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- betterlockscreen -l blur --display 1
 
-# cache lockscreen image
-exec --no-startup-id betterlockscreen -u $background --display 1 --fx blur --blur 1.5
 # lock the screen
 bindsym $mod+Escape exec betterlockscreen -l blur --display 1  -- --nofork
 
@@ -80,11 +99,11 @@ exec --no-startup-id $HOME/.config/i3/monitor.sh
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 
-# Use pactl to adjust volume in PulseAudio.
+# Use amixer to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q set Master 10%+ && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q set Master 10%- && $refresh_i3status
+bindsym XF86AudioMute exec --no-startup-id amixer -q set Master toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 # Use Mouse+$mod to drag floating windows to their wanted position
@@ -99,9 +118,6 @@ bindsym $mod+Return exec --no-startup-id alacritty
 
 # kill focused window
 bindsym $mod+Shift+q kill
-
-# start rofi (a program launcher)
-bindsym $mod+d exec --no-startup-id rofi -no-config -no-lazy-grab -show drun -modi drun -theme ~/.config/polybar/scripts/rofi/launcher.rasi
 
 # change focus
 bindsym $mod+j focus left
@@ -149,9 +165,6 @@ bindsym $mod+space focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
-
-# focus the child container
-#bindsym $mod+d focus child
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.

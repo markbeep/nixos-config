@@ -18,8 +18,6 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-
-
   home.packages =
     let
       # for installing specific unstable packages
@@ -62,7 +60,6 @@
       dig
 
       # theming
-      feh # background change
       imagemagick
       networkmanagerapplet
       picom # allows for transparent applications
