@@ -39,6 +39,8 @@
       stremio
       vlc
       anki-bin
+      anydesk
+      filezilla
 
       # terminal addons
       neofetch
@@ -71,12 +73,13 @@
       alttab # alt tab menu
 
       # coding
-      pkgsUnstable.vscode
+      # vscode is installed in the modules directory
       gcc
       poetry
       dhall-lsp-server
       dhall-json
       dhall
+      direnv
 
       # languages
       python311

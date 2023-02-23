@@ -13,6 +13,7 @@
     ./polybar
     ./rofi
     ./ssh
+    ./vscode
     ./vseth
   ];
 }
