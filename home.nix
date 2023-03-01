@@ -26,13 +26,10 @@
       };
     in
     with pkgs;[
+      # regular applications
       firefox
       pkgsUnstable.discord
       slack
-      kubectl
-      krew # package manager for kubectl
-      (pkgs.libsForQt5.callPackage ~/nixos-config/nixpkgs/sipctl/default.nix { })
-      (pkgs.libsForQt5.callPackage ~/nixos-config/nixpkgs/servis/default.nix { })
       flameshot # screenshot 
       okular # pdf viewer
       nomacs # image viewer
@@ -42,10 +39,18 @@
       anydesk
       filezilla
 
+      # kubernetes / VIS
+      kubectl
+      krew # package manager for kubectl
+      (pkgs.libsForQt5.callPackage ~/nixos-config/nixpkgs/sipctl/default.nix { })
+      (pkgs.libsForQt5.callPackage ~/nixos-config/nixpkgs/servis/default.nix { })
+
       # terminal addons
       neofetch
       htop
-      pkgsUnstable.nix-direnv
+      # auto load environment
+      direnv
+      nix-direnv
 
       # core
       brightnessctl
@@ -59,7 +64,6 @@
       wmctrl # used by vscode glassit extension
       autorandr # modify window sizes
       arandr # gui for handling multiple monitors
-      dig
 
       # theming
       imagemagick
@@ -73,16 +77,10 @@
       alttab # alt tab menu
 
       # coding
-      # vscode is installed in the modules directory
+      pkgsUnstable.vscode
       gcc
-      poetry
-      dhall-lsp-server
-      dhall-json
-      dhall
-      direnv
 
       # languages
-      python311
       nodejs-16_x
       nil # nix lsp
       nixpkgs-fmt
