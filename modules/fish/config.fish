@@ -1,7 +1,4 @@
 if status is-interactive
-    # easy dotfile management
-    alias dots="git --git-dir=$HOME/.dots/ --work-tree=$HOME"
-    
     # alias for nvim
     alias vim='nvim'
     alias vi='nvim'
