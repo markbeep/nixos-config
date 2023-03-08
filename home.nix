@@ -105,6 +105,8 @@
       texlive.combined.scheme-full
     ];
 
+  services.lorri.enable = true;
+
   # enables the fonts to be used
   fonts.fontconfig.enable = true;
 

@@ -124,7 +124,7 @@ in
   };
 
   # earlyoom (better out of memory management)
-  services.earlyoom.enable = true;
+  services.earlyoom.enable = false;
 
   # bluetooth
   hardware.bluetooth.enable = true;
