@@ -15,7 +15,7 @@ Host *.ethz.ch
   IdentityFile ~/.ssh/gitlab
 
 # CAT/CIT
-Host kasse.vis.ethz.ch kavis.vis.ethz.ch vending-machine-1.vis.ethz.ch vending-machine-2.vis.ethz.ch
+Host kasse.vis.ethz.ch kavis.vis.ethz.ch vending-machine-1.vis.ethz.ch vending-machine-2.vis.ethz.ch infoscreen-1.vis.ethz.ch
   User pi
 Host *.vis.ethz.ch
   User vis
