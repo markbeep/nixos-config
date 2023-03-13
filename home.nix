@@ -44,6 +44,7 @@
       krew # package manager for kubectl
       (pkgs.libsForQt5.callPackage ~/nixos-config/nixpkgs/sipctl/default.nix { })
       (pkgs.libsForQt5.callPackage ~/nixos-config/nixpkgs/servis/default.nix { })
+      (pkgs.libsForQt5.callPackage ~/nixos-config/nixpkgs/visdev/default.nix { })
 
       # terminal addons
       neofetch
