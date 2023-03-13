@@ -94,7 +94,7 @@ bindsym $mod+Escape exec betterlockscreen -l blur --display 1  -- --nofork
 bindsym Print exec --no-startup-id flameshot gui
 
 # set ups monitors correctly
-exec --no-startup-id $HOME/.config/i3/monitor.sh
+exec --no-startup-id wal -s -i $background
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.

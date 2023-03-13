@@ -77,7 +77,7 @@
       alttab # alt tab menu
 
       # coding
-      pkgsUnstable.vscode
+      pkgsUnstable.vscode-fhs
       gcc
 
       # languages
