@@ -30,9 +30,7 @@ stdenv.mkDerivation {
   installPhase = ''
     runHook preInstall
     
-    mkdir -p "$out/bin"
-    cp $src "$out/bin/sipctl"
-    chmod +x $out/bin/sipctl
+    install -Dm755 $src $out/bin/sipctl
     
     runHook postInstall
   '';

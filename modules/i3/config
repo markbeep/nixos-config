@@ -69,6 +69,9 @@ exec_always --no-startup-id $HOME/.config/i3/polybar.sh
 bindsym XF86MonBrightnessUp exec brightnessctl set +10% # increase screen brightness
 bindsym XF86MonBrightnessDown exec brightnessctl set 10%- # decrease screen brightness
 
+# Battery notifications
+exec --no-startup-id batsignal
+
 # disable mouse focus
 focus_follows_mouse no
 

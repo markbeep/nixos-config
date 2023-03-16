@@ -1,35 +1,48 @@
+{lib, ...}:
+let
+  # gets the specific index from the pywal colors
+  getColor = x: with lib; pipe ~/.cache/wal/colors [
+    readFile
+    (splitString "\n")
+    (lists.sublist x (add x 1))
+    lists.head
+  ];
+  colorFG = getColor 7;
+  colorBG = getColor 0;
+in
 {
   services.dunst.enable = true;
   services.dunst.settings = {
     global = {
-      frame_width = 1;
-      frame_color = "#888888";
-      font = "Noto Sans 8";
-      markup = true;
-      format = "%s %p\n%b";
-      sort = true;
-      indicate_hidden = true;
-      alignment = "left";
-      bounce_freq = 5;
-      show_age_threshold = 60;
-      word_wrap = false;
-      ignore_newline = false;
-      geometry = "0x4-25+25";
-      shrink = true;
-      idle_threshold = 120;
+      # display
       monitor = 0;
-      follow = "mouse";
-      sticky_history = false;
-      history_length = 20;
-      show_indicators = true;
-      line_height = 0;
+      # geometry
+      width = 200;
+      height = 300;
+      origin = "top-right";
+      offset = "10x30";
+      scale = 0;
+      notification_limit = 0;
+      corner_radius = 5;
+
+      transparency = 15;
       separator_height = 1;
       padding = 8;
       horizontal_padding = 10;
-      browser = "firefox";
-      icon_position = "left";
-      max_icon_size = 64;
-      width = 200;
+      text_icon_padding = 0;
+      separator_color = "frame";
+      sort = true;
+      idle_threshold = 120;
+      frame_width = 0;
+
+      # text
+      font = "Monospace 8"; # or Noto Sans
+      line_height = 0;
+      markup = "full";
+      alignment = "left";
+      vertical_alignment = "center";
+      ellipsize = "middle";
+      ignore_newline = false;
     };
 
     shortcuts = {
@@ -40,20 +53,21 @@
     };
 
     urgency_low = {
-      background = "#333333";
-      foreground = "#888888";
+      background = colorBG;
+      foreground = colorFG;
       timeout = 5;
     };
 
     urgency_normal = {
-      background = "#333333";
-      foreground = "#aaaaaa";
-      timeout = 5;
+      background = colorBG;
+      foreground = colorFG;
+      frame_width = 1;
     };
 
     urgency_critical = {
-      background = "#D62929";
-      foreground = "#F9FAF9";
+      background = "#ff5555";
+      foreground = "#f8f8f2";
+      frame_color = "#ff5555";
       timeout = 0;
     };
 

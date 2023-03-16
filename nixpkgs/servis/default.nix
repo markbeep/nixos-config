@@ -20,9 +20,7 @@ stdenv.mkDerivation {
   installPhase = ''
     runHook preInstall
     
-    mkdir -p "$out/bin"
-    cp $src "$out/bin/servis"
-    chmod +x $out/bin/servis
+    install -Dm755 $src "$out/bin/servis"
     
     runHook postInstall
   '';

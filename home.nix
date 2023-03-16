@@ -70,16 +70,17 @@
       imagemagick
       networkmanagerapplet
       picom # allows for transparent applications
-      dunst # notifications 
-      libnotify # send notifications
       pywal # background and color change
       dmenu
+      dunst # notifications
       networkmanager_dmenu
       alttab # alt tab menu
+      batsignal # background battery manager
 
       # coding
       pkgsUnstable.vscode-fhs
       gcc
+      xclip # required for nvim copy/pasting
 
       # languages
       nodejs-16_x
