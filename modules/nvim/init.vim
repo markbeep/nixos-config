@@ -12,7 +12,6 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 call plug#begin(stdpath('data') . '/plugged')
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'preservim/nerdtree'
 Plug 'wakatime/vim-wakatime'
 Plug 'rstacruz/vim-closer'
 Plug 'nvim-lua/plenary.nvim'
@@ -21,6 +20,7 @@ Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim'
 Plug 'machakann/vim-sandwich'
 Plug 'LnL7/vim-nix'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 
 "Color Themes
 Plug 'kyoz/purify', { 'rtp': 'vim' }

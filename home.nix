@@ -52,6 +52,8 @@
       # auto load environment
       direnv
       nix-direnv
+      fzf
+      ripgrep # required for nvim grep 
 
       # core
       brightnessctl
