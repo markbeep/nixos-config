@@ -9,7 +9,6 @@
     ./gpg
     ./i3
     ./kube
-    ./nvim
     ./polybar
     ./rofi
     ./ssh
