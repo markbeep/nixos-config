@@ -38,6 +38,7 @@
       anki-bin
       anydesk
       filezilla
+      neovim
 
       # kubernetes / VIS
       kubectl
@@ -54,6 +55,7 @@
       nix-direnv
       fzf
       ripgrep # required for nvim grep 
+      xdotool
 
       # core
       brightnessctl

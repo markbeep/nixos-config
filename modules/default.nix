@@ -12,6 +12,7 @@
     ./polybar
     ./rofi
     ./ssh
+    ./nvim
     ./vscode
     ./vseth
   ];
