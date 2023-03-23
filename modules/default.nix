@@ -8,6 +8,7 @@
     ./git
     ./gpg
     ./i3
+    ./kitty
     ./kube
     ./polybar
     ./rofi

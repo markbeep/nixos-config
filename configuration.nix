@@ -148,7 +148,7 @@ in
 
     # terminal
     fish
-    alacritty
+    kitty
 
     # developing
     git
@@ -172,6 +172,8 @@ in
     # signed git commits
     gnupg
     pinentry-curses
+
+    cifs-utils # filestash
   ];
 
   services.gnome.gnome-keyring.enable = true;
@@ -187,6 +189,16 @@ in
   virtualisation.docker.rootless = {
     enable = true;
     setSocketVariable = true;
+  };
+
+  fileSystems."/mnt/vseth" = {
+    device = "//nas22.ethz.ch/eth_vseth_nas_2";
+    fsType="cifs";
+    options = [
+      "username=mcsurgay"
+      "domain=d.ethz.ch,noauto,user"
+      "vers=3.0"
+    ];
   };
 
   powerManagement.powertop.enable = true;

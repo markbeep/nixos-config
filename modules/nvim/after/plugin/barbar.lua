@@ -17,4 +17,4 @@ vim.keymap.set("n", "<A-8>", function() vim.cmd.BufferGoto(8) end)
 vim.keymap.set("n", "<A-9>", function() vim.cmd.BufferGoto(9) end)
 vim.keymap.set("n", "<A-0>", function() vim.cmd.BufferGoto(0) end)
 
-vim.keymap.set("n", "<A-c>", vim.cmd.BufferClose)
+vim.keymap.set("n", "<A-w>", vim.cmd.BufferClose)

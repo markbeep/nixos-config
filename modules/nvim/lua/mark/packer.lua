@@ -69,6 +69,7 @@ return require('packer').startup(function(use)
             {'rafamadriz/friendly-snippets'}, -- Optional
         }
     }
+    use('LnL7/vim-nix') -- nix support
     use('tveskag/nvim-blame-line')
     use('wakatime/vim-wakatime')
 
@@ -91,8 +92,7 @@ return require('packer').startup(function(use)
             require("which-key").setup {}
         end
     }
-    use('WhoIsSethDaniel/toggle-lsp-diagnostics.nvim')
-
     use 'nvim-tree/nvim-web-devicons'
     use {'romgrk/barbar.nvim', requires = 'nvim-web-devicons'}
+    use('ThePrimeagen/vim-be-good')
 end)

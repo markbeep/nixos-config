@@ -10,7 +10,7 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
-set $background "$HOME/nixos-config/media/synth-car.jpg"
+set $background "$HOME/nixos-config/media/fluffy.jpg"
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -39,8 +39,6 @@ default_border pixel 1
 
 # start rofi (a program launcher)
 bindsym $mod+d exec rofi -no-config -no-lazy-grab -show drun -modi drun -theme ~/.config/polybar/scripts/rofi/launcher.rasi
-
-bindsym $mod+Shift+Return exec --no-startup-id /home/mark/nixos-config/modules/alacritty/spawn-alacritty.sh
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -120,7 +118,7 @@ floating_modifier $mod
 tiling_drag modifier titlebar
 
 # start a terminal
-bindsym $mod+Return exec --no-startup-id alacritty
+bindsym $mod+Return exec --no-startup-id kitty
 
 # kill focused window
 bindsym $mod+Shift+q kill
