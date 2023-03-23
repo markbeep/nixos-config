@@ -18,7 +18,7 @@ in
   nix.gc = {
     automatic = true;
     dates = "weekly";
-    options = "--delete-older-than 30d";
+    options = "--delete-older-than 14d";
   };
 
   # Bootloader.
@@ -27,7 +27,6 @@ in
   boot.loader.grub = {
     enable = true;
     device = "nodev";
-    useOSProber = true;
     efiSupport = true;
   };
 
@@ -162,8 +161,6 @@ in
 
     # grub bootloader
     grub
-    # os-prober required to find PopOS partition
-    os-prober
 
     earlyoom # better control when out of memory
 
