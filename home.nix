@@ -43,9 +43,9 @@
       # kubernetes / VIS
       kubectl
       krew # package manager for kubectl
-      (pkgs.libsForQt5.callPackage ~/nixos-config/nixpkgs/sipctl/default.nix { })
-      (pkgs.libsForQt5.callPackage ~/nixos-config/nixpkgs/servis/default.nix { })
-      (pkgs.libsForQt5.callPackage ~/nixos-config/nixpkgs/visdev/default.nix { })
+      (pkgs.libsForQt5.callPackage ~/nixos-config/apps/sipctl/default.nix { })
+      (pkgs.libsForQt5.callPackage ~/nixos-config/apps/servis/default.nix { })
+      (pkgs.libsForQt5.callPackage ~/nixos-config/apps/visdev/default.nix { })
 
       # terminal addons
       neofetch
@@ -105,7 +105,7 @@
       terminus_font
       material-icons
       (nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" "Iosevka" ]; })
-      (pkgs.libsForQt5.callPackage ~/nixos-config/nixpkgs/feather/default.nix { })
+      (pkgs.libsForQt5.callPackage ~/nixos-config/apps/feather/default.nix { })
 
       # latex
       texlive.combined.scheme-full

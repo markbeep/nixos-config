@@ -21,5 +21,8 @@ if status is-interactive
 
     set -gx PATH $PATH $HOME/.krew/bin
 
+    # makes fzf ignore files located in .grepignore
+    set -gx FZF_ALT_C_COMMAND 'rg --hidden --files --sort-files --ignore-file=$HOME/nixos-config/modules/fish/.ignore --null | xargs -0 dirname | uniq'
+
 end
 

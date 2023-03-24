@@ -95,4 +95,5 @@ return require('packer').startup(function(use)
     use 'nvim-tree/nvim-web-devicons'
     use {'romgrk/barbar.nvim', requires = 'nvim-web-devicons'}
     use('ThePrimeagen/vim-be-good')
+    use('jose-elias-alvarez/null-ls.nvim')
 end)
