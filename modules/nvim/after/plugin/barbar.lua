@@ -1,11 +1,12 @@
+-- switch tabs
 vim.keymap.set("n", "<A-,>", vim.cmd.BufferPrevious)
 vim.keymap.set("n", "<A-.>", vim.cmd.BufferNext)
 
-
+-- reposition tabs
 vim.keymap.set("n", "<A-<>", vim.cmd.BufferMovePrevious)
 vim.keymap.set("n", "<A->>", vim.cmd.BufferMoveNext)
 
-
+-- jump to tab
 vim.keymap.set("n", "<A-1>", function() vim.cmd.BufferGoto(1) end)
 vim.keymap.set("n", "<A-2>", function() vim.cmd.BufferGoto(2) end)
 vim.keymap.set("n", "<A-3>", function() vim.cmd.BufferGoto(3) end)
@@ -17,4 +18,7 @@ vim.keymap.set("n", "<A-8>", function() vim.cmd.BufferGoto(8) end)
 vim.keymap.set("n", "<A-9>", function() vim.cmd.BufferGoto(9) end)
 vim.keymap.set("n", "<A-0>", function() vim.cmd.BufferGoto(0) end)
 
+-- close
 vim.keymap.set("n", "<A-w>", vim.cmd.BufferClose)
+-- force close
+vim.keymap.set("n", "<A-S-w>", function() vim.cmd("BufferClose!") end)
