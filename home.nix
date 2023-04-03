@@ -38,7 +38,7 @@
       anki-bin
       anydesk
       filezilla
-      neovim
+      # neovim # installed in modules
       keepass
 
       # kubernetes / VIS
