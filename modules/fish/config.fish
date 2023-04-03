@@ -2,6 +2,7 @@ if status is-interactive
     # alias for nvim
     alias vim='nvim'
     alias vi='nvim'
+    alias v='nvim .'
     
     # ssh shortcuts
     alias ssh-home='ssh mark@server.markc.su'

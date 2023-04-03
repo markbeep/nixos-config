@@ -39,6 +39,7 @@
       anydesk
       filezilla
       neovim
+      keepass
 
       # kubernetes / VIS
       kubectl
