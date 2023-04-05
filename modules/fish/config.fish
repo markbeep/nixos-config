@@ -6,7 +6,7 @@ if status is-interactive
     
     # ssh shortcuts
     alias ssh-home='ssh mark@server.markc.su'
-    alias ssh-pi='ssh -t mark@server.markc.su ssh pi@192.168.1.101'
+    alias ssh-pi='ssh -t mark@server.markc.su ssh pi@192.168.1.131'
     alias ssh-vsos='ssh debian@mcsurgay.vsos.ethz.ch'
     
     alias dup='docker compose up --build'
