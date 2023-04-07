@@ -5,3 +5,4 @@ vim.keymap.set('n', '<leader>ps', function()
     builtin.grep_string({search = vim.fn.input("Grep > ")});
 end)
 vim.keymap.set("n", "<leader>vrr", builtin.lsp_references, {})
+vim.keymap.set("n", "gd", builtin.lsp_definitions, {})
