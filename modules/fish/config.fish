@@ -12,6 +12,7 @@ if status is-interactive
     alias dup='docker compose up --build'
     alias ddown='docker compose down'
     
+    alias nrs="sudo nixos-rebuild switch"
     alias hms="home-manager switch"
 
     # removes fish greeting

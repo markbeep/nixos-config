@@ -46,7 +46,8 @@
       krew # package manager for kubectl
       (pkgs.libsForQt5.callPackage ~/nixos-config/apps/sipctl/default.nix { })
       (pkgs.libsForQt5.callPackage ~/nixos-config/apps/servis/default.nix { })
-      (pkgs.libsForQt5.callPackage ~/nixos-config/apps/visdev/default.nix { })
+      # only attempts to install if ssh keys are setup. Installs hello otherwise
+      (if builtins.pathExists ~/.ssh then (pkgs.libsForQt5.callPackage ~/nixos-config/apps/visdev/default.nix { }) else hello)
 
       # terminal addons
       neofetch
@@ -83,7 +84,7 @@
       batsignal # background battery manager
 
       # coding
-      pkgsUnstable.vscode-fhs
+      vscode-fhs
       gcc
       xclip # required for nvim copy/pasting
 

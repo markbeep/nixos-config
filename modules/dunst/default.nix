@@ -1,14 +1,16 @@
 {lib, ...}:
 let
   # gets the specific index from the pywal colors
-  getColor = x: with lib; pipe ~/.cache/wal/colors [
+  path = ~/.cache/wal/colors;
+  getColor = x: with lib; pipe path [
     readFile
     (splitString "\n")
     (lists.sublist x (add x 1))
     lists.head
   ];
-  colorFG = getColor 7;
-  colorBG = getColor 0;
+  # defaults to simple black and white if file doesn't exist yet
+  colorFG = if builtins.pathExists path then (getColor 7) else "#FFFFFF";
+  colorBG = if builtins.pathExists path then (getColor 0) else "#000000";
 in
 {
   services.dunst.enable = true;

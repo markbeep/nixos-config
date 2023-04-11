@@ -1,14 +1,20 @@
 { config, pkgs, ... }:
-let
-  home-manager-store = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/master.tar.gz";
-in
 {
   imports =
     [
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      (import "${home-manager-store}/nixos")
+      (import "${home-manager}/nixos")
     ];
+
+  # loads the home manager config
+  users.users.mark = {
+    isNormalUser = true;
+    description = "Mark";
+    extraGroups = [ "networkmanager" "wheel" ];
+    shell = pkgs.fish;
+  };
+  home-manager.users.mark = import ~/nixos-config/home.nix {};
 
   # enable flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -128,13 +134,6 @@ in
   # bluetooth
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
-
-  users.users.mark = {
-    isNormalUser = true;
-    description = "Mark";
-    extraGroups = [ "networkmanager" "wheel" ];
-    shell = pkgs.fish;
-  };
 
   environment.systemPackages = with pkgs; [
     # essentials
