@@ -2,7 +2,7 @@
 
 One line install everything:
 ```bash
-curl https://raw.githubusercontent.com/markbeep/nixos-config/main/install.sh | sh
+nix-shell -p curl -p git --run "curl https://raw.githubusercontent.com/markbeep/nixos-config/main/install.sh | sh"
 ```
 
 List of commands to copy the setup:

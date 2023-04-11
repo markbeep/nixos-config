@@ -84,7 +84,7 @@
       pkgsUnstable.stylish # automatic background fetching
 
       # coding
-      vscode-fhs
+      pkgsUnstable.vscode-fhs
       gcc
       xclip # required for nvim copy/pasting
 
