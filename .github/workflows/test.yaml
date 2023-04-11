@@ -22,7 +22,7 @@ jobs:
         with:
           context: .
           platforms: linux/amd64
-          tags: nix
+          tags: nix:latest
           load: true
 
       - name: Summary
@@ -50,11 +50,10 @@ jobs:
           context: .
           file: ./Dockerfile.all
           platforms: linux/amd64
-          tags: nix
+          tags: nix:latest
           load: true
 
       - name: Summary
         run: |
           echo "## Main Configuration Size" >> $GITHUB_STEP_SUMMARY
           docker run --rm nix >> $GITHUB_STEP_SUMMARY
-
