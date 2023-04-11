@@ -89,16 +89,17 @@ workspace_auto_back_and_forth yes
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- betterlockscreen -l blur --display 1
+# automatically loads a new wallpaper on startup
+exec_always --no-startup-id styli.sh -s "jet" -p -w 3000 -h 2000
+
 exec --no-startup-id betterlockscreen -u $background --display 1 --fx blur --blur 4
 
 # lock the screen
-bindsym $mod+Escape exec betterlockscreen -l blur --display 1  -- --nofork
+bindsym $mod+Escape exec betterlockscreen -l blur --display 1 -- --nofork
 
 # screenshot
 bindsym Print exec --no-startup-id flameshot gui
 
-# set ups monitors correctly
-exec --no-startup-id wal -s -i $background
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
@@ -213,8 +214,6 @@ bindsym $mod+Shift+0 move container to workspace number $ws10
 #bindsym Mod1+Shift+Tab workspace prev
 exec --no-startup-id alttab -fg "#d58681" -bg "#4a4a4a" -frame "#eb564d" -t 128x150 -i 127x64
 
-# reload monitors
-bindsym $mod+Shift+m exec --no-startup-id $HOME/.config/i3/monitor.sh
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)

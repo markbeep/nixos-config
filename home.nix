@@ -81,6 +81,7 @@
       networkmanager_dmenu
       alttab # alt tab menu
       batsignal # background battery manager
+      pkgsUnstable.stylish # automatic background fetching
 
       # coding
       vscode-fhs
