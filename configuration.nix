@@ -15,7 +15,7 @@
     shell = pkgs.fish;
   };
   nixpkgs.config.allowUnfree = true;
-  home-manager.users.mark = import /home/mark/nixos-config/home.nix pkgs;
+  home-manager.users.mark = import ./home.nix pkgs;
 
   # enable flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -24,7 +24,6 @@
   nix.settings.auto-optimise-store = true;
   nix.gc = {
     automatic = true;
-    dates = "weekly";
     options = "--delete-older-than 14d";
   };
 
@@ -38,7 +37,7 @@
   };
 
   networking = {
-    hostName = "mark-laptop";
+    hostName = "mark_laptop";
 
     # extra hosts in /etc/hosts file
     extraHosts =

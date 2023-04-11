@@ -1,4 +1,4 @@
-name: Build Release Production
+name: Test Home Manager Configuration
 
 on: [push, pull_request]
 

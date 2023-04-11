@@ -20,6 +20,4 @@ require("mason-null-ls").setup({
     automatic_setup = true
 })
 
-require'mason-null-ls'.setup_handlers()
-
 vim.keymap.set("n", "<leader>f", function() vim.lsp.buf.format() end, opts)

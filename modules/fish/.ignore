@@ -5,4 +5,4 @@ go
 .vscode
 .local
 .mozilla
-nixpkgs/*
+Documents/nixpkgs/*
