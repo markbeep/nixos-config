@@ -16,10 +16,11 @@ ENV NIXPKGS_ALLOW_UNFREE 1
 
 COPY modules modules
 COPY apps apps
+COPY media media
 COPY test.nix configuration.nix hardware-configuration.nix home.nix ./
 
 # Run the test
 RUN nix-build test.nix
 
 # additionally counts the size of all installed packages
-RUN du -hc /nix --max-depth 0
+CMD du -hc /nix --max-depth 0
