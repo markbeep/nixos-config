@@ -11,9 +11,9 @@ RUN nix-env -e man-db
 RUN nix-shell '<home-manager>' -A install
 
 COPY home.nix /root/.config/home-manager/home.nix
-COPY modules /root/nixos-config/modules
-COPY apps /root/nixos-config/apps
-RUN home-manager build
+COPY modules /root/.config/home-manager/modules
+COPY apps /root/.config/home-manager/apps
+RUN home-manager build 
 
 # additionally counts the size of all installed packages
-RUN du -hc /nix --max-depth
+RUN du -hc /nix --max-depth 0

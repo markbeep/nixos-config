@@ -1,5 +1,5 @@
 { config, pkgs, ... }:
-rec {
+{
   # specific configurations
   imports = [
     ./modules
