@@ -4,7 +4,7 @@
     [
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      (import "${home-manager}/nixos")
+      <home-manager/nixos>
     ];
 
   # loads the home manager config
@@ -14,7 +14,8 @@
     extraGroups = [ "networkmanager" "wheel" ];
     shell = pkgs.fish;
   };
-  home-manager.users.mark = import ~/nixos-config/home.nix {};
+  nixpkgs.config.allowUnfree = true;
+  home-manager.users.mark = import /home/mark/nixos-config/home.nix pkgs;
 
   # enable flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];

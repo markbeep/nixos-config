@@ -1,9 +1,8 @@
 { config, pkgs, ... }:
-
-{
+rec {
   # specific configurations
   imports = [
-    ~/nixos-config/modules
+    ./modules
   ];
 
 
@@ -44,10 +43,10 @@
       # kubernetes / VIS
       kubectl
       krew # package manager for kubectl
-      (pkgs.libsForQt5.callPackage ~/nixos-config/apps/sipctl/default.nix { })
-      (pkgs.libsForQt5.callPackage ~/nixos-config/apps/servis/default.nix { })
+      (pkgs.libsForQt5.callPackage ./apps/sipctl/default.nix { })
+      (pkgs.libsForQt5.callPackage ./apps/servis/default.nix { })
       # only attempts to install if ssh keys are setup. Installs hello otherwise
-      (if builtins.pathExists ~/.ssh then (pkgs.libsForQt5.callPackage ~/nixos-config/apps/visdev/default.nix { }) else hello)
+      (if builtins.pathExists ~/.ssh then (pkgs.libsForQt5.callPackage ./apps/visdev/default.nix { }) else hello)
 
       # terminal addons
       neofetch
@@ -107,7 +106,7 @@
       terminus_font
       material-icons
       (nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" "Iosevka" ]; })
-      (pkgs.libsForQt5.callPackage ~/nixos-config/apps/feather/default.nix { })
+      (pkgs.libsForQt5.callPackage ./apps/feather/default.nix { })
 
       # latex
       texlive.combined.scheme-full
