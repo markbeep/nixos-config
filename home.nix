@@ -37,7 +37,6 @@
       anki-bin
       anydesk
       filezilla
-      # neovim # installed in modules
       keepass
 
       # kubernetes / VIS
@@ -60,16 +59,19 @@
 
       # core
       brightnessctl
-      pulseaudio
       killall
-      pavucontrol # audio settings
-      pamixer
-      bluez
-      bluez-tools # bluetooth
-      unzip
-      wmctrl # used by vscode glassit extension
-      autorandr # modify window sizes
       arandr # gui for handling multiple monitors
+      
+      # audio settings
+      pulseaudio
+      pavucontrol 
+      pamixer
+
+      # bluetooth
+      bluez
+      bluez-tools
+      
+      unzip
 
       # theming
       imagemagick
@@ -79,13 +81,12 @@
       dmenu
       dunst # notifications
       networkmanager_dmenu
-      alttab # alt tab menu
-      batsignal # background battery manager
+      batsignal # battery notifications
       pkgsUnstable.stylish # automatic background fetching
 
       # coding
+      # neovim # installed in modules
       pkgsUnstable.vscode-fhs
-      gcc
       xclip # required for nvim copy/pasting
 
       # languages
@@ -96,6 +97,7 @@
       go_1_18
       hugo
       gnumake
+      gcc
 
       # fonts
       noto-fonts
@@ -113,15 +115,11 @@
       texlive.combined.scheme-full
     ];
 
+  # handles direnv setups in projects
   services.lorri.enable = true;
 
   # enables the fonts to be used
   fonts.fontconfig.enable = true;
-
-  # setup monitors that are already known
-  programs.autorandr = {
-    enable = true;
-  };
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage

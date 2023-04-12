@@ -16,12 +16,13 @@ vim.cmd [[packadd packer.nvim]]
 -- :PackerSync to update
 return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
-
+    use 'ThePrimeagen/git-worktree.nvim'
     use {
         'nvim-telescope/telescope.nvim', tag = '0.1.1',
         -- or                            , branch = '0.1.x',
         requires = { {'nvim-lua/plenary.nvim'} }
     }
+    use 'nvim-telescope/telescope-fzy-native.nvim'
     use({
         'rose-pine/neovim',
         as = 'rose-pine',

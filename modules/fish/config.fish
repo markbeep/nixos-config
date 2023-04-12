@@ -3,6 +3,8 @@ if status is-interactive
     alias vim='nvim'
     alias vi='nvim'
     alias v='nvim .'
+    # quickly enters nvim in the context of the config
+    alias c='fish -c "cd ~/nixos-config; nvim ."'
     
     # ssh shortcuts
     alias ssh-home='ssh mark@server.markc.su'
