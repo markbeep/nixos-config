@@ -91,13 +91,15 @@
 
       # languages
       nodejs-16_x
-      nil # nix lsp
       nixpkgs-fmt
       yarn
       go_1_18
       hugo
       gnumake
       gcc
+
+      # LSP tools
+      nil # nix lsp
 
       # fonts
       noto-fonts
