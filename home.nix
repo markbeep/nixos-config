@@ -13,7 +13,7 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  home.packages = import ./apps.nix pkgs;
+  home.packages = import ./apps pkgs;
 
   # handles direnv setups in projects
   services.lorri.enable = true;
