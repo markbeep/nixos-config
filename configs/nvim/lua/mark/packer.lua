@@ -75,6 +75,13 @@ return require('packer').startup(function(use)
     }
     use 'jose-elias-alvarez/null-ls.nvim'
     use 'jay-babu/mason-null-ls.nvim'
+    use 'neovim/nvim-lspconfig'
+    use 'hrsh7th/nvim-cmp'
+    use 'hrsh7th/cmp-nvim-lsp'
+    use 'hrsh7th/cmp-buffer'
+    use 'hrsh7th/cmp-path'
+    use 'rafamadriz/friendly-snippets'
+    use 'williamboman/mason-lspconfig.nvim'
 
     -- show errors
     use {

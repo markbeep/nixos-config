@@ -5,6 +5,7 @@ local null_ls = require("null-ls")
 local formatting = null_ls.builtins.formatting
 local diagnostics = null_ls.builtins.diagnostics
 local completion = null_ls.builtins.code_actions
+
 null_ls.setup({
     sources = {
         -- js/ts
@@ -17,6 +18,16 @@ null_ls.setup({
 })
 
 require("mason-null-ls").setup({automatic_setup = true, handlers = {}})
+
+require'cmp'.setup {sources = {{name = 'nvim_lsp'}}}
+local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+local lspconfig = require('lspconfig')
+require('mason-lspconfig').setup_handlers({
+    function(server_name)
+        lspconfig[server_name].setup({capabilities = lsp_capabilities})
+    end
+})
 
 vim.keymap.set("n", "<leader>f", function() vim.lsp.buf.format() end, {})
 vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, {})
