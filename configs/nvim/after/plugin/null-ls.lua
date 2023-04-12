@@ -2,13 +2,17 @@ require("mason").setup()
 
 -- use specific config for formatting with prettier
 local null_ls = require("null-ls")
+local formatting = null_ls.builtins.formatting
+local diagnostics = null_ls.builtins.diagnostics
+local completion = null_ls.builtins.code_actions
 null_ls.setup({
     sources = {
         -- js/ts
-        null_ls.builtins.formatting.prettierd.with({
+        formatting.prettierd.with({
             extra_filetypes = {"toml"},
             extra_args = {"--arrow-parens avoid", "--trailing-comma all"}
-        })
+        }), -- nix
+        formatting.nixpkgs_fmt, diagnostics.statix, completion.statix
     }
 })
 
@@ -26,19 +30,3 @@ vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end, {})
 vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, {})
 vim.keymap.set("i", "<C-Space>", function() vim.lsp.buf.completion() end, {})
 vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, {})
-
--- nix lsp
--- local lsp_path = vim.env.NIL_PATH or 'target/debug/nil'
--- require('lspconfig').nil_ls.setup {
---   autostart = true,
---   capabilities = caps,
---   cmd = { lsp_path },
---   settings = {
---     ['nil'] = {
---       testSetting = 42,
---       formatting = {
--- 	command = { "nixpkgs-fmt" },
---       },
---     },
---   },
--- }

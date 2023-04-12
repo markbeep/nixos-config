@@ -14,10 +14,10 @@ RUN nix-shell '<home-manager>' -A install
 
 ENV NIXPKGS_ALLOW_UNFREE 1
 
-COPY modules modules
+COPY configs configs
 COPY apps apps
 COPY media media
-COPY scripts/test.nix configuration.nix hardware-configuration.nix home.nix ./
+COPY scripts/test.nix apps.nix configuration.nix hardware-configuration.nix home.nix ./
 
 # Run the test
 RUN nix-build test.nix || true

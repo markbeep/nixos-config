@@ -189,7 +189,7 @@
 
   fileSystems."/mnt/vseth" = {
     device = "//nas22.ethz.ch/eth_vseth_nas_2";
-    fsType="cifs";
+    fsType = "cifs";
     options = [
       "username=mcsurgay"
       "domain=d.ethz.ch,noauto,user"

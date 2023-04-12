@@ -11,7 +11,8 @@ RUN nix-env -e man-db
 RUN nix-shell '<home-manager>' -A install
 
 COPY home.nix /root/.config/home-manager/home.nix
-COPY modules /root/.config/home-manager/modules
+COPY apps.nix /root/.config/home-manager/apps.nix
+COPY configs /root/.config/home-manager/configs
 COPY apps /root/.config/home-manager/apps
 COPY media /root/.config/home-manager/media
 RUN home-manager build 
