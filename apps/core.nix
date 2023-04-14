@@ -13,6 +13,7 @@ pkgs: unstable: with pkgs; [
   filezilla
   keepass
   unzip
+  arandr
 
   # neovim # installed in configs
   unstable.vscode-fhs

@@ -93,8 +93,8 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- betterlockscreen -l blur 
 bindsym $mod+Escape exec betterlockscreen -l blur --display 1 -- --nofork
 
 # automatically loads a new wallpaper on startup
-exec_always --no-startup-id styli.sh -r "WarplanePorn" -p -w 3000 -h 2000 &
-# exec_always --no-startup-id wal -s -i $background
+# exec_always --no-startup-id styli.sh -r "WarplanePorn" -p -w 3000 -h 2000 &
+exec_always --no-startup-id wal -s -i $background
 
 exec --no-startup-id betterlockscreen -u $background --display 1 --fx blur --blur 4
 
