@@ -12,10 +12,17 @@ pkgs: unstable: with pkgs; [
   anydesk
   filezilla
   keepass
-  unzip
-  arandr
+  arandr # monitor setup GUI
 
   # neovim # installed in configs
   unstable.vscode-fhs
   xclip # required for nvim copy/pasting
+
+  unzip
+  # audio settings
+  pulseaudio
+  pavucontrol
+  pamixer
+  brightnessctl
+  killall
 ]

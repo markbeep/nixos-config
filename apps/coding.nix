@@ -14,4 +14,6 @@ pkgs: unstable: with pkgs; [
 
   # latex
   texlive.combined.scheme-full
+
+  git-lfs
 ]
