@@ -69,6 +69,8 @@ return require('packer').startup(function(use)
     use('tpope/vim-fugitive')
 
     -- LSP
+    use 'VonHeikemen/lsp-zero.nvim'
+    use 'L3MON4D3/LuaSnip'
     use {
         "williamboman/mason.nvim",
         run = ":MasonUpdate" -- :MasonUpdate updates registry contents
