@@ -128,9 +128,6 @@
     enableSSHSupport = true;
   };
 
-  # earlyoom (better out of memory management)
-  services.earlyoom.enable = false;
-
   # bluetooth
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
@@ -161,15 +158,14 @@
     # grub bootloader
     grub
 
-    earlyoom # better control when out of memory
-
     powertop # optimizes battery usage
 
     # signed git commits
     gnupg
     pinentry-curses
 
-    cifs-utils # filestash
+    # filestash
+    cifs-utils
   ];
 
   services.gnome.gnome-keyring.enable = true;

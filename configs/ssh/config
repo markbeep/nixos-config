@@ -1,14 +1,22 @@
 # servers / general dev
-Host server.markc.su
+Host home
+  User mark
   HostName server.markc.su
   ForwardAgent yes
   IdentityFile ~/.ssh/home
+Host vsos
+  User debian
+  HostName mcsurgay.vsos.ethz.ch
+  PreferredAuthentications publickey
+  IdentityFile ~/.ssh/vsos
+Host pi
+  User pi
+  HostName 192.168.1.131
+  ProxyJump home
+
 Host github.com
   PreferredAuthentications publickey
   IdentityFile ~/.ssh/gitlab
-Host mcsurgay.vsos.ethz.ch
-  PreferredAuthentications publickey
-  IdentityFile ~/.ssh/vsos
 
 Host *.ethz.ch
   PreferredAuthentications publickey
