@@ -6,6 +6,13 @@
   programs = {
     neovim = {
       enable = true;
+      viAlias = true;
+      vimAlias = true;
+
+      withPython3 = true;
+      withRuby = false;
+      withNodeJs = true;
+
       extraPackages = with pkgs; [
         lua51Packages.luarocks # for lua formatter
         cmake

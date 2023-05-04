@@ -91,4 +91,7 @@ return require('packer').startup(function(use)
         requires = "nvim-tree/nvim-web-devicons",
         config = function() require("trouble").setup {} end
     }
+
+    -- LaTeX
+    use 'lervag/vimtex'
 end)

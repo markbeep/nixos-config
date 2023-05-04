@@ -19,7 +19,34 @@ null_ls.setup({
 
 require("mason-null-ls").setup({automatic_setup = true, handlers = {}})
 
-require'cmp'.setup {sources = {{name = 'nvim_lsp'}}}
+local cmp = require 'cmp'
+cmp.setup {
+    sources = {{name = 'nvim_lsp'}},
+    mapping = cmp.mapping.preset.insert({
+        ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+        ['<C-f>'] = cmp.mapping.scroll_docs(4),
+        ['<C-Space>'] = cmp.mapping.complete(),
+        ['<C-e>'] = cmp.mapping.abort(),
+        ['<CR>'] = cmp.mapping.confirm {
+            behavior = cmp.ConfirmBehavior.Replace,
+            select = true
+        },
+        ['<Tab>'] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+                cmp.select_next_item()
+            else
+                fallback()
+            end
+        end, {'i', 's'}),
+        ['<S-Tab>'] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+                cmp.select_prev_item()
+            else
+                fallback()
+            end
+        end, {'i', 's'})
+    })
+}
 local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 local mason_lspconfig = require("mason-lspconfig")
@@ -28,7 +55,6 @@ mason_lspconfig.setup {automatic_installation = true}
 local lspconfig = require('lspconfig')
 
 vim.keymap.set("n", "<leader>f", function() vim.lsp.buf.format() end, {})
-vim.keymap.set("i", "<C-Space>", function() vim.lsp.buf.completion() end, {})
 local on_attach = function(client, bufnr)
     vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, {})
     vim.keymap.set("n", "<leader>vws",
@@ -52,4 +78,3 @@ mason_lspconfig.setup_handlers({
         })
     end
 })
-
