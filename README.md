@@ -22,3 +22,7 @@ nix-channel --update
 # builds the main part using the custom configuration
 sudo nixos-rebuild switch -I $HOME/nixos-config/configuration.nix
 ```
+# SSH
+For applications that are in private repos (visdev) for example, the private keys
+and config needs to be added to the root user .ssh directory, since nixos-rebuild
+is ran as root.

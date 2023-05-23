@@ -7,4 +7,5 @@ pkgs: unstable: with pkgs; [
   fzf
   ripgrep # required for nvim grep
   xdotool
+  fd
 ]
