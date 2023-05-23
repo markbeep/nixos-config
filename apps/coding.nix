@@ -11,6 +11,8 @@ pkgs: unstable: with pkgs; [
   nil # nix lsp
   statix
   nixpkgs-fmt
+  java-language-server
+  maven # required for java-language-server
 
   # latex
   texlive.combined.scheme-full

@@ -82,6 +82,9 @@ return require('packer').startup(function(use)
     use 'hrsh7th/cmp-nvim-lsp'
     use 'hrsh7th/cmp-buffer'
     use 'hrsh7th/cmp-path'
+
+    -- snippets
+    use 'SirVer/ultisnips'
     use 'rafamadriz/friendly-snippets'
     use 'williamboman/mason-lspconfig.nvim'
 
@@ -94,4 +97,7 @@ return require('packer').startup(function(use)
 
     -- LaTeX
     use 'lervag/vimtex'
+
+    -- TODO highlighting
+    use {"folke/todo-comments.nvim", requires = "nvim-lua/plenary.nvim"}
 end)
