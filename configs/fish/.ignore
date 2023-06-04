@@ -1,8 +1,0 @@
-# files that should be ignored in fzf
-node_modules
-go
-.cache
-.vscode
-.local
-.mozilla
-Documents/nixpkgs/*

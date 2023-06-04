@@ -1,4 +1,6 @@
 pkgs: unstable: with pkgs; [
+  git-crypt
+
   # languages
   nodejs-16_x
   yarn

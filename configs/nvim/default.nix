@@ -1,4 +1,4 @@
-{pkgs, ...}:
+{ pkgs, ... }:
 {
   home.file.".config/nvim/after".source = ./after;
   home.file.".config/nvim/init.lua".source = ./init.lua;
@@ -12,6 +12,10 @@
       withPython3 = true;
       withRuby = false;
       withNodeJs = true;
+
+      plugins = with pkgs; [
+        vimPlugins.markdown-preview-nvim
+      ];
 
       extraPackages = with pkgs; [
         lua51Packages.luarocks # for lua formatter

@@ -78,7 +78,8 @@ vim.keymap.set("n", "]d", function() vim.diagnostic.goto_next() end, {})
 vim.keymap.set("n", "[d", function() vim.diagnostic.goto_prev() end, {})
 vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end, {})
 vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, {})
-vim.keymap.set("i", "<C-S-Space>", function() vim.lsp.buf.signature_help() end, {})
+vim.keymap.set("i", "<C-S-Space>", function() vim.lsp.buf.signature_help() end,
+               {})
 
 mason_lspconfig.setup_handlers({
     function(server_name)

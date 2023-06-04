@@ -15,7 +15,7 @@ pkgs: unstable: with pkgs; [
   arandr # monitor setup GUI
 
   # neovim # installed in configs
-  unstable.vscode-fhs
+  unstable.vscode
   xclip # required for nvim copy/pasting
 
   unzip
