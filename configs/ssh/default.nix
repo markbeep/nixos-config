@@ -1,3 +1,3 @@
 {
-  home.file.".ssh/ssh_config".source = ./config;
+  home.file.".ssh/config".source = ./config.priv;
 }

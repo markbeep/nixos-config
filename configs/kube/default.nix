@@ -1,3 +1,3 @@
 {
-  home.file.".kube/config".source = ./config;
+  home.file.".kube/config".source = ./config.priv;
 }

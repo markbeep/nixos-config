@@ -1,6 +1,0 @@
-current-endpoint: vis-20
-endpoints:
-- domain: kube-1-20-sip.grpc.vis.ethz.ch:443
-  name: vis-20
-  registry: eu.gcr.io/aerial-reef-202214
-  unsafe: false
