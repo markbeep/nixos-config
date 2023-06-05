@@ -1,4 +1,4 @@
-pkgs: unstable: with pkgs; [
+pkgs: with pkgs; [
   git-crypt
 
   # languages

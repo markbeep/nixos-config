@@ -15,7 +15,7 @@ stdenv.mkDerivation {
   # luckily these urls stay consistent
   src = fetchurl {
     url = "https://tools.vseth.ethz.ch/sipctl/linux-amd64/sipctl";
-    sha256 = getChecksum "https://tools.vseth.ethz.ch/sipctl/linux-amd64/sipctl.checksum";
+    sha256 = "sha256-jbP8XpjXYa5i+UUFVgkDkQ4bG42CL8q67E20u81pkHs=";
   };
 
   dontUnpack = true;

@@ -8,7 +8,7 @@ if status is-interactive
     alias ddown='docker compose down'
     
     # makes nixos-rebuild use the custom configuration
-    alias nrs="sudo nixos-rebuild switch -I nixos-config=/home/mark/nixos-config/configuration.nix"
+    alias nrs="sudo nixos-rebuild switch --flake /home/mark/nixos-config#mark"
 
     # removes fish greeting
     set fish_greeting

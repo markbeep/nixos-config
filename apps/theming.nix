@@ -1,4 +1,4 @@
-pkgs: unstable: with pkgs; [
+pkgs: with pkgs; [
   # theming
   imagemagick
   networkmanagerapplet
@@ -8,5 +8,5 @@ pkgs: unstable: with pkgs; [
   dunst # notifications
   networkmanager_dmenu
   batsignal # battery notifications
-  unstable.stylish # automatic background fetching
+  stylish # automatic background fetching
 ]

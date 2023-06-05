@@ -1,7 +1,7 @@
-{lib, ...}:
+{ lib, ... }:
 let
   # gets the specific index from the pywal colors
-  path = ~/.cache/wal/colors;
+  path = /home/mark/.cache/wal/colors;
   getColor = x: with lib; pipe path [
     readFile
     (splitString "\n")

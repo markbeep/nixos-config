@@ -4,18 +4,19 @@
     [
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      <home-manager/nixos>
     ];
 
-  # loads the home manager config
   users.users.mark = {
     isNormalUser = true;
     description = "Mark";
     extraGroups = [ "networkmanager" "wheel" ];
     shell = pkgs.fish;
   };
+
+  nixpkgs.config.permittedInsecurePackages = [
+    "nodejs-16.20.0"
+  ];
   nixpkgs.config.allowUnfree = true;
-  home-manager.users.mark = import ./home.nix pkgs;
 
   # enable flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -28,8 +29,10 @@
   };
 
   # Bootloader.
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.efi.efiSysMountPoint = "/boot/efi";
+  boot.loader.efi = {
+    canTouchEfiVariables = true;
+    efiSysMountPoint = "/boot/efi";
+  };
   boot.loader.grub = {
     enable = true;
     device = "nodev";
@@ -154,9 +157,6 @@
     libsecret
     gnome.gnome-keyring
     libgnome-keyring
-
-    # grub bootloader
-    grub
 
     powertop # optimizes battery usage
 

@@ -1,4 +1,4 @@
-pkgs: unstable: with pkgs; [
+pkgs: with pkgs; [
   # fonts
   noto-fonts
   noto-fonts-extra

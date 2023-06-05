@@ -1,4 +1,4 @@
-pkgs: unstable: with pkgs; [
+pkgs: with pkgs; [
   # terminal addons
   neofetch
   htop

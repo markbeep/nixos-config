@@ -1,7 +1,7 @@
-pkgs: unstable: with pkgs; [
+pkgs: with pkgs; [
   # regular applications
   firefox
-  unstable.discord
+  discord
   slack
   flameshot # screenshot
   okular # pdf viewer
@@ -15,7 +15,7 @@ pkgs: unstable: with pkgs; [
   arandr # monitor setup GUI
 
   # neovim # installed in configs
-  unstable.vscode
+  vscode
   xclip # required for nvim copy/pasting
 
   unzip
