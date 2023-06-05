@@ -1,12 +1,9 @@
-name: Test User Applications
+name: Test Configuration Syntax
 
 on: [ push, pull_request ]
 
-env:
-  NIXPKGS_ALLOW_UNFREE: 1
-
 jobs:
-  coding:
+  syntax:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3

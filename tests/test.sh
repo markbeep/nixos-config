@@ -1,3 +1,4 @@
+# Tests the whole configuration for syntax errors
 `timeout 30s bash tests/command.sh`
 err=$?
 if [ $err == 0 ] || [ $err == 124 ]; then
