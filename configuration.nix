@@ -27,6 +27,11 @@
     automatic = true;
     options = "--delete-older-than 14d";
   };
+  # required for nix-direnv to work and have environments not garbage collected
+  nix.extraOptions = ''
+    keep-outputs = true
+    keep-derivations = true
+  '';
 
   # Bootloader.
   boot.loader.efi = {
