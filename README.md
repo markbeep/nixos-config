@@ -1,12 +1,18 @@
 # Mark's Personal NixOS Setup
 
+The configuration is set up using a flake. You can theoretically rebuild the system
+by just running the following nixos rebuild command:
+```bash
+nixos-rebuild switch --flake github:markbeep/NixOS-config#mark
+```
+
 One line install everything:
 
 ```bash
 nix-shell -p curl -p git --run "curl https://raw.githubusercontent.com/markbeep/nixos-config/main/install.sh | sh"
 ```
 
-List of commands to copy the setup:
+List of commands to copy the setup and having the setup locally:
 
 ```bash
 # temporarily install git in the shell
