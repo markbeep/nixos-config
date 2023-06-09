@@ -33,7 +33,6 @@ with pkgs;
   nodejs-16_x
   yarn
   go_1_18
-  hugo
   gnumake
   gcc
 
