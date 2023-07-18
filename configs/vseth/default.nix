@@ -1,3 +1,3 @@
 {
-  home.file.".config/vseth/sipctl/config.yml".source = ./sipctl/config.yml.priv;
+  home.file.".config/vseth/sipctl/config.yml".source = ./sipctl.yml.priv;
 }
