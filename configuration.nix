@@ -74,7 +74,7 @@
         [greeter]
         show-password-label = false
         [greeter-theme]
-        background-image = "/home/mark/nixos-config/media/synth-car.jpg"
+        background-image = ""
       '';
     };
 
@@ -91,22 +91,30 @@
       ];
     };
 
+    videoDrivers = [ "nvidia" "intel" ];
     # removes screen tearing
-    videoDrivers = [ "intel" ];
     deviceSection = ''
       Option "DRI" "2"
       Option "TearFree" "true"
     '';
+
+    # Configure keymap in X11
+    layout = "ch";
+    xkbVariant = "";
+  };
+
+  hardware.nvidia.prime = {
+    offload = {
+      enable = true;
+      enableOffloadCmd = true;
+    };
+
+    intelBusId = "PCI:0:2:0";
+    nvidiaBusId = "PCI:1:0:0";
   };
 
   # Enable i3blocks to find the correct /etc
   environment.pathsToLink = [ "/libexec" ];
-
-  # Configure keymap in X11
-  services.xserver = {
-    layout = "ch";
-    xkbVariant = "";
-  };
 
   # Configure console keymap
   console.keyMap = "sg";
@@ -141,6 +149,8 @@
   services.blueman.enable = true;
 
   environment.systemPackages = with pkgs; [
+    xdg-utils # for opening default programs when clicking links
+
     # essentials
     home-manager
     wget
