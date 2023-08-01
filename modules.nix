@@ -40,8 +40,6 @@ with pkgs;
   nil # nix lsp
   statix
   nixpkgs-fmt
-  java-language-server
-  maven # required for java-language-server
 
   # latex
   texlive.combined.scheme-full
@@ -60,7 +58,7 @@ with pkgs;
   terminus_font
   material-icons
   (nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" "Iosevka" ]; })
-  (pkgs.libsForQt5.callPackage ./derivations/feather/default.nix { })
+  (pkgs.callPackage ./derivations/feather/default.nix { })
 
 
   # terminal addons
@@ -89,11 +87,11 @@ with pkgs;
   # kubernetes / VIS
   kubectl
   krew # package manager for kubectl
-  (pkgs.libsForQt5.callPackage ./derivations/sipctl/default.nix { })
-  (pkgs.libsForQt5.callPackage ./derivations/servis/default.nix { })
+  (pkgs.callPackage ./derivations/sipctl/default.nix { })
+  (pkgs.callPackage ./derivations/servis/default.nix { })
   # only attempts to install if ssh keys are setup. Installs hello otherwise
   (if builtins.pathExists /root/.ssh then
-    (pkgs.libsForQt5.callPackage ./derivations/visdev/default.nix { })
+    (pkgs.callPackage ./derivations/visdev/default.nix { })
   else
     hello)
 ]
