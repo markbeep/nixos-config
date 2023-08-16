@@ -13,9 +13,6 @@
     shell = pkgs.fish;
   };
 
-  nixpkgs.config.permittedInsecurePackages = [
-    "nodejs-16.20.1"
-  ];
   nixpkgs.config.allowUnfree = true;
 
   # enable flakes

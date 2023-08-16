@@ -20,6 +20,7 @@ with pkgs;
   vscode
   xclip # required for nvim copy/pasting
   unzip
+  obsidian
 
   # audio settings
   pulseaudio
@@ -30,7 +31,6 @@ with pkgs;
 
 
   # languages
-  nodejs-16_x
   yarn
   go_1_18
   gnumake
