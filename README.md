@@ -20,14 +20,6 @@ nix-shell -p git
 
 cd ~
 git clone https://github.com/markbeep/NixOS-config ~/nixos-config
-
-# add the unstable and home-manager channels
-nix-channel --add https://nixos.org/channels/nixpkgs-unstable unstable
-nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
-nix-channel --update
-
-# builds the main part using the custom configuration
-sudo nixos-rebuild switch -I $HOME/nixos-config/configuration.nix
 ```
 
 # SSH
@@ -42,3 +34,14 @@ Files ending in `.priv` are private and encrypted with
 [git-crypt](https://github.com/AGWA/git-crypt). To decrypt them (if you have the
 permissions), you can simply run `git-crypt unlock` or `git-crypt unlock
 /path/to/file` if a key file is given.
+
+
+### WSL
+The WSL configuration can be used to quickly set up a WSL instance running NixOS.
+
+Follow the documentation in the [NixOS-WSL repo](https://github.com/nix-community/NixOS-WSL) to install NixOS in WSL. Then copy the `wsl-configuration.nix` to /etc/nixos/configuration.nix and run `sudo nixos-rebuild switch`.
+
+To finish setting up direnv, the following line has to be added to `~/.bashrc`:
+```
+eval "$(direnv hook bash)"
+```
