@@ -21,5 +21,7 @@ if status is-interactive
     # makes fzf ignore files located in .grepignore
     set -gx FZF_ALT_C_COMMAND 'fd --type d'
 
+    set -gx EDITOR 'nvim'
+
 end
 
