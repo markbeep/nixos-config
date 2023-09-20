@@ -32,7 +32,7 @@ with pkgs;
 
   # languages
   yarn
-  go_1_18
+  go_1_20
   gnumake
   gcc
 

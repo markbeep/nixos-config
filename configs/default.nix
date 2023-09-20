@@ -16,5 +16,6 @@
     ./nvim
     ./vscode
     ./vseth
+    ./xscreensaver
   ];
 }

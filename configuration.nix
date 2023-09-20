@@ -64,16 +64,7 @@
   services.xserver = {
     enable = true;
 
-    displayManager.lightdm.greeters.mini = {
-      enable = true;
-      user = "mark";
-      extraConfig = ''
-        [greeter]
-        show-password-label = false
-        [greeter-theme]
-        background-image = ""
-      '';
-    };
+    displayManager.gdm.enable = true;
 
     windowManager.i3 = {
       enable = true;
@@ -83,8 +74,7 @@
         rofi
         polybarFull
         betterlockscreen
-        xss-lock # to lock on suspend
-        lightdm # display manager
+        xscreensaver # to lock screen
       ];
     };
 
