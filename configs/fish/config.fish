@@ -23,5 +23,13 @@ if status is-interactive
 
     set -gx EDITOR 'nvim'
 
+    # quickly creates a basic shell.nix and .envrc in the local directory
+    alias s='echo "\
+with import <nixpkgs> {};
+with pkgs;
+mkShell {
+  buildInputs = [];
+}" > shell.nix && echo "use nix" > .envrc'
+
 end
 
