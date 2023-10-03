@@ -25,7 +25,7 @@ if status is-interactive
 
     # quickly creates a basic shell.nix and .envrc in the local directory
     alias s='echo "\
-with import <nixpkgs> {};
+with import <unstable> {};
 with pkgs;
 mkShell {
   buildInputs = [];
