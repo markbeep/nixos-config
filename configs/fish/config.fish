@@ -10,6 +10,14 @@ if status is-interactive
     # makes nixos-rebuild use the custom configuration
     alias nrs="sudo nixos-rebuild switch --flake /home/mark/nixos-config#mark"
 
+    alias sr="sudo reboot now"
+    alias sn="sudo shutdown now"
+
+    # VIS kubectl commands
+    alias kb="kubectl"
+    alias kbs="kubectl -n vis-cat-staging"
+    alias kbp="kubectl -n vis-cat-prod"
+
     # removes fish greeting
     set fish_greeting
     
