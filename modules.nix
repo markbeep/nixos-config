@@ -89,6 +89,7 @@ with pkgs;
   krew # package manager for kubectl
   (pkgs.callPackage ./derivations/sipctl/default.nix { })
   (pkgs.callPackage ./derivations/servis/default.nix { })
+  (pkgs.callPackage ./derivations/servisctl/default.nix { })
   # only attempts to install if ssh keys are setup. Installs hello otherwise
   (if builtins.pathExists /root/.ssh then
     (pkgs.callPackage ./derivations/visdev/default.nix { })
