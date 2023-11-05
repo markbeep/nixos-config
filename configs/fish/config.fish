@@ -39,5 +39,9 @@ mkShell {
   buildInputs = [];
 }" > shell.nix && echo "use nix" > .envrc'
 
+function to64 -d "Encode to base64"
+    echo -n $argv | base64
+end
+
 end
 
