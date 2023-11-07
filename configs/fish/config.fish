@@ -14,9 +14,9 @@ if status is-interactive
     alias sn="sudo shutdown now"
 
     # VIS kubectl commands
-    alias kb="kubectl"
-    alias kbs="kubectl -n vis-cat-staging"
-    alias kbp="kubectl -n vis-cat-prod"
+    abbr kb "kubectl"
+    abbr kbs "kubectl -n vis-cat-staging"
+    abbr kbp "kubectl -n vis-cat-prod"
 
     # removes fish greeting
     set fish_greeting
