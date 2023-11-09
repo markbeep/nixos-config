@@ -4,14 +4,15 @@ if status is-interactive
     # quickly enters nvim in the context of the config
     alias c='fish -c "cd ~/nixos-config; nvim ."'
     
-    alias dup='docker compose up --build'
-    alias ddown='docker compose down'
+    abbr dup 'docker compose up --build'
+    abbr ddown 'docker compose down'
     
     # makes nixos-rebuild use the custom configuration
-    alias nrs="sudo nixos-rebuild switch --flake /home/mark/nixos-config#mark"
+    abbr nrs "sudo nixos-rebuild switch --flake /home/mark/nixos-config#mark"
 
-    alias sr="sudo reboot now"
-    alias sn="sudo shutdown now"
+    abbr sr "sudo reboot now"
+    abbr sn "sudo shutdown now"
+    abbr g "git"
 
     # VIS kubectl commands
     abbr kb "kubectl"

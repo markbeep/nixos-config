@@ -8,6 +8,9 @@
       co = "checkout";
       s = "status";
       a = "add .";
+      p = "pull";
+      ph = "push";
+      f = "fetch --all";
     };
   };
 }
