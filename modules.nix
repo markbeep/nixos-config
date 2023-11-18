@@ -64,6 +64,8 @@ with pkgs;
   # terminal addons
   neofetch
   htop
+  btop
+  k9s
   direnv # auto load environment
   nix-direnv
   fzf

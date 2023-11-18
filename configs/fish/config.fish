@@ -6,6 +6,7 @@ if status is-interactive
     
     abbr dup 'docker compose up --build'
     abbr ddown 'docker compose down'
+    abbr d 'docker'
     
     # makes nixos-rebuild use the custom configuration
     abbr nrs "sudo nixos-rebuild switch --flake /home/mark/nixos-config#mark"
@@ -18,6 +19,11 @@ if status is-interactive
     abbr kb "kubectl"
     abbr kbs "kubectl -n vis-cat-staging"
     abbr kbp "kubectl -n vis-cat-prod"
+
+    abbr yd "yarn dev"
+    abbr yi "yarn"
+    abbr nd "npm run dev"
+    abbr ni "npm i"
 
     # removes fish greeting
     set fish_greeting

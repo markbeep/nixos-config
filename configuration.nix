@@ -48,6 +48,7 @@
     extraHosts =
       ''
         127.0.0.1 minio
+        127.0.0.1 eventmanager-minio
       '';
 
     # Enable networking
