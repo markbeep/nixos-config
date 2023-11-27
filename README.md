@@ -35,6 +35,10 @@ Files ending in `.priv` are private and encrypted with
 permissions), you can simply run `git-crypt unlock` or `git-crypt unlock
 /path/to/file` if a key file is given.
 
+# Copy Files
+Some files need to be copied over manually, since NixOS makes them read-only
+when copying them over. These include:
+- `configs/kube/config.priv` to `.kube/config`
 
 ### WSL
 The WSL configuration can be used to quickly set up a WSL instance running NixOS.
