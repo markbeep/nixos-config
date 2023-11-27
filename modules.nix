@@ -29,7 +29,6 @@ with pkgs;
   brightnessctl
   killall
 
-
   # languages
   yarn
   go_1_20
@@ -41,12 +40,8 @@ with pkgs;
   statix
   nixpkgs-fmt
 
-  # latex
-  texlive.combined.scheme-full
-
   git-lfs
   git-crypt
-
 
   # fonts
   noto-fonts
@@ -60,7 +55,6 @@ with pkgs;
   (nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" "Iosevka" ]; })
   (pkgs.callPackage ./derivations/feather/default.nix { })
 
-
   # terminal addons
   neofetch
   htop
@@ -73,7 +67,6 @@ with pkgs;
   xdotool
   fd
 
-
   # theming
   imagemagick
   networkmanagerapplet
@@ -84,7 +77,6 @@ with pkgs;
   networkmanager_dmenu
   batsignal # battery notifications
   stylish # automatic background fetching
-
 
   # kubernetes / VIS
   kubectl
