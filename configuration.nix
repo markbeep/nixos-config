@@ -15,6 +15,11 @@
 
   nixpkgs.config.allowUnfree = true;
 
+  # obsidian uses EOL Electron 25.9.0
+  nixpkgs.config.permittedInsecurePackages = [
+    "electron-25.9.0"
+  ];
+
   # enable flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 

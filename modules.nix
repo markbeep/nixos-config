@@ -27,7 +27,6 @@ with pkgs;
   pavucontrol
   pamixer
   brightnessctl
-  killall
 
   # languages
   yarn
@@ -49,8 +48,6 @@ with pkgs;
   liberation_ttf
   dejavu_fonts
   open-sans
-  fantasque-sans-mono
-  terminus_font
   material-icons
   (nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" "Iosevka" ]; })
   (pkgs.callPackage ./derivations/feather/default.nix { })
@@ -67,16 +64,15 @@ with pkgs;
   xdotool
   fd
 
-  # theming
+  # theming / services
   imagemagick
-  networkmanagerapplet
   picom # allows for transparent applications
   pywal # background and color change
   dmenu
+  networkmanagerapplet
   dunst # notifications
   networkmanager_dmenu
   batsignal # battery notifications
-  stylish # automatic background fetching
 
   # kubernetes / VIS
   kubectl
