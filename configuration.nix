@@ -1,10 +1,8 @@
-{ config, pkgs, ... }:
-{
-  imports =
-    [
-      # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+{ config, pkgs, ... }: {
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   users.users.mark = {
     isNormalUser = true;
@@ -16,9 +14,7 @@
   nixpkgs.config.allowUnfree = true;
 
   # obsidian uses EOL Electron 25.9.0
-  nixpkgs.config.permittedInsecurePackages = [
-    "electron-25.9.0"
-  ];
+  nixpkgs.config.permittedInsecurePackages = [ "electron-25.9.0" ];
 
   # enable flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -50,11 +46,10 @@
     hostName = "mark_laptop";
 
     # extra hosts in /etc/hosts file
-    extraHosts =
-      ''
-        127.0.0.1 minio
-        127.0.0.1 eventmanager-minio
-      '';
+    extraHosts = ''
+      127.0.0.1 minio
+      127.0.0.1 eventmanager-minio
+    '';
 
     # Enable networking
     networkmanager.enable = true;
@@ -209,11 +204,7 @@
   fileSystems."/mnt/vseth" = {
     device = "//nas22.ethz.ch/eth_vseth_nas_2";
     fsType = "cifs";
-    options = [
-      "username=mcsurgay"
-      "domain=d.ethz.ch,noauto,user"
-      "vers=3.0"
-    ];
+    options = [ "username=mcsurgay" "domain=d.ethz.ch,noauto,user" "vers=3.0" ];
   };
 
   zramSwap.enable = true;

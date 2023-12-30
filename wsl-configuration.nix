@@ -1,10 +1,8 @@
-{ lib, pkgs, config, modulesPath, ... }:
+{ lib, pkgs, modulesPath, ... }:
 
 with lib;
-let
-  nixos-wsl = import ./nixos-wsl;
-in
-{
+let nixos-wsl = import ./nixos-wsl;
+in {
   imports = [
     "${modulesPath}/profiles/minimal.nix"
 
@@ -25,13 +23,7 @@ in
 
   };
 
-  environment.systemPackages = with pkgs; [
-    git
-    vim
-    wget
-    direnv
-    nix-direnv
-  ];
+  environment.systemPackages = with pkgs; [ git vim wget direnv nix-direnv ];
 
   nix.gc = {
     automatic = true;

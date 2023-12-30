@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ pkgs, ... }: {
   # specific configurations
   imports = [ ./configs ];
 

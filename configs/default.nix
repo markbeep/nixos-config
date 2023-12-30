@@ -7,6 +7,7 @@
     ./flameshot
     ./git
     ./gpg
+    ./helix
     ./i3
     ./kitty
     ./polybar

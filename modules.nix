@@ -1,7 +1,6 @@
 # all installed user apps
 { pkgs, ... }:
-with pkgs;
-[
+with pkgs; [
   # regular applications
   firefox
   discord
@@ -18,6 +17,7 @@ with pkgs;
   arandr # monitor setup GUI
   # neovim # installed in configs
   vscode
+  helix
   xclip # required for nvim copy/pasting
   unzip
   obsidian
@@ -37,7 +37,7 @@ with pkgs;
   # LSP tools
   nil # nix lsp
   statix
-  nixpkgs-fmt
+  nixfmt
 
   git-lfs
   git-crypt

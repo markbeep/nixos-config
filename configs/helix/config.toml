@@ -1,0 +1,26 @@
+theme = "rose_pine"
+
+[editor]
+line-number = "relative"
+bufferline = "always"
+
+[editor.soft-wrap]
+enable = true
+
+[editor.statusline]
+left = ["mode", "spinner"]
+center = ["file-name", "read-only-indicator"]
+right = ["diagnostics", "selections", "position", "position-percentage", "file-encoding"]
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.whitespace]
+render = "all"
+
+[keys.normal]
+# Center view after jumping
+n = ["search_next", "align_view_center"]
+S-n = ["search_prev", "align_view_center"]
