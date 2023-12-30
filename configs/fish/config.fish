@@ -1,5 +1,4 @@
 if status is-interactive
-    # alias for nvim
     alias v='nvim .'
     alias h='hx .'
     # quickly enters nvim in the context of the config
@@ -38,7 +37,7 @@ if status is-interactive
     # makes fzf ignore files located in .grepignore
     set -gx FZF_ALT_C_COMMAND 'fd --type d'
 
-    set -gx EDITOR 'nvim'
+    set -gx EDITOR 'hx'
 
     # quickly creates a basic shell.nix and .envrc in the local directory
     alias s='echo "\
