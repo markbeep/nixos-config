@@ -85,4 +85,6 @@ with pkgs; [
     (pkgs.callPackage ./derivations/visdev/default.nix { })
   else
     hello)
+
+  (pkgs.callPackage ./derivations/tigerjython/default.nix { })
 ]
