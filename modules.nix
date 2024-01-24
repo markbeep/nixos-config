@@ -63,6 +63,7 @@ with pkgs; [
   ripgrep # required for nvim grep
   xdotool
   fd
+  atuin
 
   # theming / services
   imagemagick

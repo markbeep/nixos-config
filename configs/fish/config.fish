@@ -28,7 +28,9 @@ if status is-interactive
 
     # removes fish greeting
     set fish_greeting
-    
+
+    atuin init fish | source
+
     kubectl completion fish | source
     sipctl completion fish | source 
 
