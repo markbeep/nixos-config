@@ -6,6 +6,7 @@ if status is-interactive
     
     abbr dup 'docker compose up --build'
     abbr ddown 'docker compose down'
+    abbr duw 'docker compose watch --no-up & docker compose up --build'
     abbr d 'docker'
     
     # makes nixos-rebuild use the custom configuration
