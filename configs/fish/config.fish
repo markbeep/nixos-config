@@ -30,7 +30,7 @@ if status is-interactive
     # removes fish greeting
     set fish_greeting
 
-    atuin init fish | source
+    atuin init fish --disable-up-arrow | source
 
     kubectl completion fish | source
     sipctl completion fish | source 
