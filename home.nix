@@ -15,9 +15,6 @@
 
   home.packages = import ./modules.nix pkgs;
 
-  # handles direnv setups in projects
-  services.lorri.enable = true; # stays until packages are cleaned up
-
   # direnv
   programs.direnv = {
     enable = true;

@@ -14,6 +14,7 @@
     ./rofi
     ./ssh
     ./nvim
+    ./starship
     ./vscode
     ./vseth
     ./xscreensaver
