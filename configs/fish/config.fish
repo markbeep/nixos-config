@@ -27,6 +27,10 @@ if status is-interactive
     abbr nd "npm run dev"
     abbr ni "npm i"
 
+    abbr fuck-infoscreen1 "ssh infoscreen-1.vis.ethz.ch 'sudo systemctl restart getty@tty1.service'"
+    abbr fuck-infoscreen2 "ssh infoscreen-2.vis.ethz.ch 'sudo systemctl restart getty@tty1.service'"
+    abbr gyolo "git commit --amend --no-edit --all && git push --force-with-lease"
+
     # removes fish greeting
     set fish_greeting
 
