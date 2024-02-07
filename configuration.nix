@@ -83,7 +83,6 @@
 
     # Configure keymap in X11
     layout = "ch";
-    xkbVariant = "";
   };
 
   hardware.nvidia = {
