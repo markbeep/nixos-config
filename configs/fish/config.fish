@@ -2,7 +2,7 @@ if status is-interactive
     alias v='nvim .'
     alias h='hx .'
     # quickly enters nvim in the context of the config
-    alias c='fish -c "cd ~/nixos-config; hx ."'
+    alias c='fish -c "cd ~/nixos-config; nvim ."'
     
     abbr dup 'docker compose up --build'
     abbr ddown 'docker compose down'

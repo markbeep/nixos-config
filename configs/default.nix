@@ -13,7 +13,7 @@
     ./polybar
     ./rofi
     ./ssh
-    ./nvim
+    # ./nixvim # handled separately in configuration.nix
     ./starship
     ./vscode
     ./vseth

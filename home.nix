@@ -13,7 +13,7 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  home.packages = import ./modules.nix pkgs;
+  home.packages = import ./modules.nix {pkgs = pkgs;};
 
   # direnv
   programs.direnv = {
