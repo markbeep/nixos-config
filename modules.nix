@@ -17,7 +17,6 @@ with pkgs; [
   arandr # monitor setup GUI
   # neovim # installed in configs
   vscode
-  helix
   xclip # required for nvim copy/pasting
   unzip
   obsidian
