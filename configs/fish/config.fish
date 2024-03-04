@@ -48,6 +48,10 @@ if status is-interactive
 
     set -gx EDITOR 'hx'
 
+    function to64 -d "Encode to base64"
+        echo -n $argv | base64
+    end
+
     # quickly creates a basic shell.nix and .envrc in the local directory
     alias s='echo "\
 with import <unstable> {};
@@ -56,9 +60,26 @@ mkShell {
   buildInputs = [];
 }" > shell.nix && echo "use nix" > .envrc'
 
-function to64 -d "Encode to base64"
-    echo -n $argv | base64
-end
+    function p -d "Create and build patched nix binary"
+        if test -z $argv[1]
+            echo "Usage: p <executable>"
+            return 1
+        end
+        echo "# Generated with Fish
+{ stdenv, autoPatchelfHook }:
+stdenv.mkDerivation {
+  name = \"exe\";
+  version = "0";
+  src = $argv;
+  dontUnpack = true;
+  dontConfigure = true;
+  dontBuild = true;
+  nativeBuildInputs = [autoPatchelfHook];
+  installPhase = \"install -Dm755 \$src \$out/bin/exe\";
+}" > build.nix
+        nix-build -E "with import <unstable> {}; callPackage ./build.nix {}"
+
+    end
 
 end
 

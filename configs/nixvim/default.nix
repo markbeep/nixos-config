@@ -1,6 +1,8 @@
 {pkgs, config, ...}: {
   programs.nixvim = {
     enable = true;
+    viAlias = true;
+    vimAlias = true;
 
     colorschemes.rose-pine.enable = true;
 
