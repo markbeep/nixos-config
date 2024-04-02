@@ -27,6 +27,7 @@
       signcolumn = "yes";
       updatetime = 50;
       colorcolumn = "80";
+      hidden = true; # allows switching tabs without saving
     };
 
     autoCmd = [
@@ -47,6 +48,7 @@
           nixd.enable = true;
           gopls.enable = true;
           zls.enable = true;
+          pyright.enable = true;
         };
       };
       nvim-cmp = {
@@ -116,6 +118,8 @@
       vim-wakatime
       vim-sleuth
       vim-be-good
+      nerdtree
+      auto-session
     ];
 
     keymaps =
@@ -123,6 +127,7 @@
     (import ./keymaps/lsp.nix) ++
     (import ./keymaps/barbar.nix) ++
     (import ./keymaps/todo.nix) ++
+    (import ./keymaps/nerdtree.nix) ++
     [
       {
         key = "<leader>b";

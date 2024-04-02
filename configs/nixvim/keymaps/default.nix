@@ -18,11 +18,26 @@
         action = ":m '<-2<CR>gv=gv";
     }
 
-    # paste without clearing paste register
+    # paste from clipboard
+    {
+        mode = "n";
+        key = "<leader>p";
+        action = "\"+p";
+    }
     {
         mode = "v";
         key = "<leader>p";
-        action = "\"_dP";
+        action = "\"+p";
+    }
+    {
+        mode = "n";
+        key = "<leader>P";
+        action = "\"+P";
+    }
+    {
+        mode = "v";
+        key = "<leader>P";
+        action = "\"+P";
     }
 
     # allows copying to clipboard with <leader>y
@@ -35,11 +50,6 @@
         mode = "v";
         key = "<leader>y";
         action = "\"+y";
-    }
-    {
-        mode = "n";
-        key = "<leader>Y";
-        action = "\"+Y";
     }
 
     # disable Q

@@ -20,6 +20,7 @@ with pkgs; [
   xclip # required for nvim copy/pasting
   unzip
   obsidian
+  thunderbird
 
   # audio settings
   pulseaudio

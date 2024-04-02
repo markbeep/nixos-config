@@ -83,7 +83,7 @@
     videoDrivers = [ "nvidia" "intel" ];
 
     # Configure keymap in X11
-    layout = "ch";
+    xkb.layout = "ch";
   };
 
   hardware.nvidia = {
@@ -138,6 +138,7 @@
 
   # Enable touchpad support
   services.xserver.libinput.enable = true;
+  services.xserver.libinput.mouse.accelSpeed = "0.3";
 
   # enable signed commits in git
   services.pcscd.enable = true;
