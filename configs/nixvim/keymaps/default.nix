@@ -1,9 +1,9 @@
 [
-    # file explorer
+    # file explorer (Oil)
     {
         mode = "n";
         key = "<leader>pv";
-        action = "<cmd>Ex<CR>";
+        action = "<cmd>Oil<CR>";
     }
 
     # move selected lines up and down with J or K
@@ -93,5 +93,10 @@
         mode = "n";
         key = "gh";
         action = "<cmd>diffget //3<CR>";
+    }
+    {
+        mode = "n";
+        key = "<leader>u";
+        action = "<cmd>UndotreeToggle<CR>";
     }
 ]

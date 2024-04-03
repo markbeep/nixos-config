@@ -30,7 +30,7 @@ with pkgs; [
 
   # languages
   yarn
-  go_1_20
+  go
   gnumake
   gcc
 

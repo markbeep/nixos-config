@@ -1,11 +1,6 @@
 [
     {
         mode = "n";
-        key = "<leader>n";
-        action = "<cmd>NERDTreeFocus<CR>";
-    }
-    {
-        mode = "n";
         key = "<C-n>";
         action = "<cmd>NERDTree<CR>";
     }

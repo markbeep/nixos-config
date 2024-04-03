@@ -1,0 +1,13 @@
+*mykeys.txt*
+*mykeys*
+
+Cheat sheet for my personal keybinds
+
+=================================================
+
+
+=================================================
+
+*mykeys-lsp*
+
+- :DiffviewOpen : Open nice looking git diff view

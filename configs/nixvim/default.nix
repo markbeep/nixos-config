@@ -8,7 +8,7 @@
 
     globals.mapleader = " ";
 
-    options = {
+    opts = {
       nu = true;
       relativenumber = true;
       tabstop = 4;
@@ -51,35 +51,27 @@
           pyright.enable = true;
         };
       };
-      nvim-cmp = {
+      cmp = {
         enable = true;
-        mappingPresets = [ "insert" ];
-        mapping = {
-          "<C-Space>" = "cmp.mapping.complete()";
-          "<C-b>" = "cmp.mapping.scroll_docs(-4)";
-          "<C-f>" = "cmp.mapping.scroll_docs(4)";
-          "<C-e>" = "cmp.mapping.close()";
-          "<CR>" = "cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true })";
-          "<S-Tab>" = {
-            action = "cmp.mapping.select_prev_item()";
-            modes = [
-              "i"
-              "s"
-            ];
+        settings = {
+          mapping = {
+            __raw = ''
+              cmp.mapping.preset.insert({
+                ['<C-Space>'] = cmp.mapping.complete(),
+                ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+                ['<C-f>'] = cmp.mapping.scroll_docs(4),
+                ['<C-e>'] = cmp.mapping.close(),
+                ['<CR>'] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
+                ['<S-Tab>'] = cmp.mapping.select_prev_item()
+              })
+            '';
           };
-          "<Tab>" = {
-            action = "cmp.mapping.select_next_item()";
-            modes = [
-              "i"
-              "s"
-            ];
-          };
+          sources = [
+            {name="nvim_lsp";}
+            {name="buffer";}
+            {name="path";}
+          ];
         };
-        sources = [
-          {name="nvim_lsp";}
-          {name="buffer";}
-          {name="path";}
-        ];
       };
 
       telescope = {
@@ -94,11 +86,15 @@
       };
       treesitter.enable = true;
       treesitter-context.enable = true;
-      comment-nvim.enable = true;
+      comment.enable = true;
       gitblame.enable = true;
       trouble.enable = true;
       todo-comments.enable = true;
       fugitive.enable = true;
+      nvim-autopairs.enable = true;
+      diffview.enable = true;
+      oil.enable = true;
+      undotree.enable = true;
 
       # Theming
       gitsigns.enable = true;
@@ -119,8 +115,13 @@
       vim-sleuth
       vim-be-good
       nerdtree
-      auto-session
+      dressing-nvim
+      tint-nvim
     ];
+    extraConfigLua = ''
+      ${(builtins.readFile ./keymaps/dressing.lua)}
+      ${(builtins.readFile ./keymaps/tint.lua)}
+    '';
 
     keymaps =
     (import ./keymaps) ++
