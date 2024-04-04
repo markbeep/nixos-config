@@ -48,7 +48,8 @@
           nixd.enable = true;
           gopls.enable = true;
           zls.enable = true;
-          pyright.enable = true;
+          ruff-lsp.enable = true;
+          lua-ls.enable = true;
         };
       };
       cmp = {
@@ -74,16 +75,6 @@
         };
       };
 
-      telescope = {
-        enable = true;
-        keymaps = {
-          "<leader>pf" = "find_files";
-          "<C-p>" = "git_files";
-          "<leader>ps" = "live_grep";
-          "<leader>vrr" = "lsp_references";
-          "gd" = "lsp_definitions";
-        };
-      };
       treesitter.enable = true;
       treesitter-context.enable = true;
       comment.enable = true;
@@ -95,6 +86,7 @@
       diffview.enable = true;
       oil.enable = true;
       undotree.enable = true;
+      fzf-lua.enable = true;
 
       # Theming
       gitsigns.enable = true;
@@ -129,6 +121,7 @@
     (import ./keymaps/barbar.nix) ++
     (import ./keymaps/todo.nix) ++
     (import ./keymaps/nerdtree.nix) ++
+    (import ./keymaps/fzf.nix) ++
     [
       {
         key = "<leader>b";

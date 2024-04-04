@@ -99,4 +99,11 @@
         key = "<leader>u";
         action = "<cmd>UndotreeToggle<CR>";
     }
+
+    # Toggle highlight search
+    {
+        mode = "n";
+        key = "<leader>h";
+        action = "<cmd>set hls!<CR>";
+    }
 ]
