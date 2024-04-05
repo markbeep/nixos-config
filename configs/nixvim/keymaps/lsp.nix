@@ -2,8 +2,7 @@
     {
         mode = "n";
         key = "<leader>f";
-        lua = true;
-        action = "function() vim.lsp.buf.format() end";
+        action = "<cmd>Neoformat<CR>";
     }
     {
         mode = "n";

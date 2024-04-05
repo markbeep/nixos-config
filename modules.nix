@@ -37,7 +37,12 @@ with pkgs; [
   # LSP tools
   nil # nix lsp
   statix
+  
+  # Formatters
   nixfmt
+  prettierd
+  ruff
+  black
 
   git-lfs
   git-crypt

@@ -138,7 +138,10 @@
 
   # Enable touchpad support
   services.xserver.libinput.enable = true;
-  services.xserver.libinput.mouse.accelSpeed = "0.3";
+  # Increase acceleration
+  services.xserver.displayManager.sessionCommands = ''
+    ${pkgs.xorg.xinput} set-prop "SYNA1D31:00 06CB:CD48 Touchpad" "libinput Accel Speed" 0.3
+  '';
 
   # enable signed commits in git
   services.pcscd.enable = true;

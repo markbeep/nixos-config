@@ -87,6 +87,7 @@
       oil.enable = true;
       undotree.enable = true;
       fzf-lua.enable = true;
+      copilot-vim.enable = true;
 
       # Theming
       gitsigns.enable = true;
@@ -104,15 +105,19 @@
 
     extraPlugins = with pkgs.vimPlugins; [
       vim-wakatime
-      vim-sleuth
+      vim-sleuth # adjusts shiftwidth/expandtab correctly
       vim-be-good
       nerdtree
       dressing-nvim
       tint-nvim
+      neoformat
     ];
     extraConfigLua = ''
       ${(builtins.readFile ./keymaps/dressing.lua)}
       ${(builtins.readFile ./keymaps/tint.lua)}
+    '';
+    extraConfigVim = ''
+      ${(builtins.readFile ./keymaps/neoformat.vim)}
     '';
 
     keymaps =
