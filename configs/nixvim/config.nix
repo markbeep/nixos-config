@@ -102,14 +102,6 @@
     # Theming
     gitsigns.enable = true;
     barbar.enable = true;
-    indent-blankline = {
-      enable = true;
-      settings.scope = {
-        show_end = false;
-        show_exact_scope = true;
-        show_start = true;
-      };
-    };
     lualine = {
       enable = true;
       theme = "palenight";
@@ -125,10 +117,10 @@
     vim-sleuth # adjusts shiftwidth/expandtab correctly
     vim-be-good
     nerdtree
-    dressing-nvim
     tint-nvim
     neoformat
-    sqlite-lua
+    nvim-spectre
+    sqlite-lua # required for smart-open
     (pkgs.vimUtils.buildVimPlugin {
       name = "smart-open";
       src = pkgs.fetchFromGitHub {
@@ -141,7 +133,7 @@
   ];
   extraConfigLua = ''
     ${(builtins.readFile ./keymaps/smart-open.lua)}
-    ${(builtins.readFile ./keymaps/dressing.lua)}
+    ${(builtins.readFile ./keymaps/spectre.lua)}
     ${(builtins.readFile ./keymaps/tint.lua)}
   '';
 
@@ -149,21 +141,21 @@
     ${(builtins.readFile ./keymaps/neoformat.vim)}
   '';
 
-  keymaps = (import ./keymaps) ++  [
-      {
-        key = "<leader>b";
-        action = "<cmd>GitBlameToggle<CR>";
-        mode = "n";
-      }
-      {
-        key = "<leader>tr";
-        action = "<cmd>TroubleToggle<CR>";
-        mode = "n";
-      }
-      {
-        key = "<leader>gs";
-        action = "<cmd>Git<CR>";
-        mode = "n";
-      }
-    ];
+  keymaps = (import ./keymaps) ++ [
+    {
+      key = "<leader>b";
+      action = "<cmd>GitBlameToggle<CR>";
+      mode = "n";
+    }
+    {
+      key = "<leader>tr";
+      action = "<cmd>TroubleToggle<CR>";
+      mode = "n";
+    }
+    {
+      key = "<leader>gs";
+      action = "<cmd>Git<CR>";
+      mode = "n";
+    }
+  ];
 }

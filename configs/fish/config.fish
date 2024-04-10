@@ -43,7 +43,10 @@ if status is-interactive
 
     set -gx PATH $PATH $HOME/.krew/bin
 
+    set -gx EDITOR nvim
+
     # makes fzf ignore files located in .grepignore
+    fzf --fish | source
     set -gx FZF_ALT_C_COMMAND 'fd --type d'
 
     function to64 -d "Encode to base64"
