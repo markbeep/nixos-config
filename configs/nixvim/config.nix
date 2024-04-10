@@ -69,6 +69,21 @@
       };
     };
 
+    telescope = {
+      enable = true;
+      extensions = {
+        fzf-native = {
+          enable = true;
+          settings = {
+            fuzzy = true;
+            override_file_sorter = true;
+            override_generic_sorter = true;
+            case_mode = "smart_case";
+          };
+        };
+      };
+    };
+
     treesitter.enable = true;
     treesitter-context.enable = true;
     comment.enable = true;
@@ -87,7 +102,14 @@
     # Theming
     gitsigns.enable = true;
     barbar.enable = true;
-    indent-blankline.enable = true;
+    indent-blankline = {
+      enable = true;
+      settings.scope = {
+        show_end = false;
+        show_exact_scope = true;
+        show_start = true;
+      };
+    };
     lualine = {
       enable = true;
       theme = "palenight";
@@ -106,18 +128,28 @@
     dressing-nvim
     tint-nvim
     neoformat
+    sqlite-lua
+    (pkgs.vimUtils.buildVimPlugin {
+      name = "smart-open";
+      src = pkgs.fetchFromGitHub {
+        owner = "danielfalk";
+        repo = "smart-open.nvim";
+        rev = "3cff486c7074a23c92339a8916ebe42bb0ffd2bf";
+        hash = "sha256-N0lDSYiHY6+IQ2AJ3dxZlNqgan49y/yw050LvvMrZdM=";
+      };
+    })
   ];
   extraConfigLua = ''
+    ${(builtins.readFile ./keymaps/smart-open.lua)}
     ${(builtins.readFile ./keymaps/dressing.lua)}
     ${(builtins.readFile ./keymaps/tint.lua)}
   '';
+
   extraConfigVim = ''
     ${(builtins.readFile ./keymaps/neoformat.vim)}
   '';
 
-  keymaps = (import ./keymaps) ++ (import ./keymaps/lsp.nix)
-    ++ (import ./keymaps/barbar.nix) ++ (import ./keymaps/todo.nix)
-    ++ (import ./keymaps/nerdtree.nix) ++ (import ./keymaps/fzf.nix) ++ [
+  keymaps = (import ./keymaps) ++  [
       {
         key = "<leader>b";
         action = "<cmd>GitBlameToggle<CR>";

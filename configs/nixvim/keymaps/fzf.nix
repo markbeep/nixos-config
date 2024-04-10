@@ -1,11 +1,6 @@
 [
     {
         mode = "n";
-        key = "<leader>pf";
-        action = "<cmd>FzfLua files<CR>";
-    }
-    {
-        mode = "n";
         key = "<C-p>";
         action = "<cmd>FzfLua git_files<CR>";
     }

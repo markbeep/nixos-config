@@ -46,8 +46,6 @@ if status is-interactive
     # makes fzf ignore files located in .grepignore
     set -gx FZF_ALT_C_COMMAND 'fd --type d'
 
-    set -gx EDITOR 'hx'
-
     function to64 -d "Encode to base64"
         echo -n $argv | base64
     end
