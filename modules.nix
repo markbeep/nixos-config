@@ -33,6 +33,7 @@ with pkgs; [
   go
   gnumake
   gcc
+  arduino
 
   # LSP tools
   nil # nix lsp

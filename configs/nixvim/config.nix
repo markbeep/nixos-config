@@ -46,7 +46,9 @@
         gopls.enable = true;
         zls.enable = true;
         ruff-lsp.enable = true;
+        dockerls.enable = true;
         lua-ls.enable = true;
+        ccls.enable = true;
       };
     };
     cmp = {
