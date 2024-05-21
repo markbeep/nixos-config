@@ -10,8 +10,11 @@ if status is-interactive
     abbr d 'docker'
     
     # makes nixos-rebuild use the custom configuration
-    abbr nrs "sudo nixos-rebuild switch --flake /home/mark/nixos-config#mark"
-    abbr nrt "sudo nixos-rebuild test --flake /home/mark/nixos-config#mark"
+    # abbr nrs "sudo nixos-rebuild switch --flake /home/mark/nixos-config#mark"
+    # abbr nrt "sudo nixos-rebuild test --flake /home/mark/nixos-config#mark"
+    abbr ns "nh os switch /home/mark/nixos-config -H mark"
+    abbr nu "nh os switch /home/mark/nixos-config -H mark -u"
+    abbr nt "nh os test /home/mark/nixos-config -H mark"
 
     abbr sr "sudo reboot now"
     abbr sn "sudo shutdown now"

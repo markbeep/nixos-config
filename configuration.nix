@@ -22,10 +22,12 @@
 
   # reduce file size used & automatic garbage collector
   nix.settings.auto-optimise-store = true;
-  nix.gc = {
-    automatic = true;
-    options = "--delete-older-than 14d";
-  };
+  # GC is handled by Nix Helper
+  # nix.gc = {
+  #   automatic = true;
+  #   options = "--delete-older-than 14d";
+  # };
+
   # required for nix-direnv to work and have environments not garbage collected
   nix.extraOptions = ''
     keep-outputs = true
@@ -83,7 +85,8 @@
     videoDrivers = [ "nvidia" "intel" ];
 
     # Configure keymap in X11
-    xkb.layout = "ch";
+    xkb.layout = "ch,us";
+    xkb.options = "grp:alt_space_toggle";
   };
 
   hardware.nvidia = {
@@ -149,6 +152,13 @@
     enable = true;
     pinentryPackage = pkgs.pinentry-curses;
     enableSSHSupport = true;
+  };
+
+  programs.nh = {
+    enable = true;
+    clean.enable = true;
+    clean.extraArgs = "--keep-since 4d --keep 3";
+    flake = "/home/mark/nixos-config";
   };
 
   # bluetooth

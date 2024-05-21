@@ -40,7 +40,7 @@ with pkgs; [
   statix
   
   # Formatters
-  nixfmt
+  nixfmt-rfc-style
   prettierd
   ruff
   black
