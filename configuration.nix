@@ -23,10 +23,10 @@
   # reduce file size used & automatic garbage collector
   nix.settings.auto-optimise-store = true;
   # GC is handled by Nix Helper
-  # nix.gc = {
-  #   automatic = true;
-  #   options = "--delete-older-than 14d";
-  # };
+  nix.gc = {
+    automatic = true;
+    options = "--delete-older-than 14d";
+  };
 
   # required for nix-direnv to work and have environments not garbage collected
   nix.extraOptions = ''
@@ -156,7 +156,7 @@
 
   programs.nh = {
     enable = true;
-    clean.enable = true;
+    clean.enable = false; # Also clears project envs
     clean.extraArgs = "--keep-since 4d --keep 3";
     flake = "/home/mark/nixos-config";
   };

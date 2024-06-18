@@ -1,6 +1,7 @@
 # all installed user apps
 { pkgs, ... }:
-with pkgs; [
+with pkgs;
+[
   # regular applications
   firefox
   discord
@@ -21,6 +22,7 @@ with pkgs; [
   unzip
   obsidian
   thunderbird
+  zed-editor
 
   # audio settings
   pulseaudio
@@ -38,7 +40,7 @@ with pkgs; [
   # LSP tools
   nil # nix lsp
   statix
-  
+
   # Formatters
   nixfmt-rfc-style
   prettierd
@@ -55,7 +57,13 @@ with pkgs; [
   dejavu_fonts
   open-sans
   material-icons
-  (nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" "Iosevka" ]; })
+  (nerdfonts.override {
+    fonts = [
+      "FiraCode"
+      "JetBrainsMono"
+      "Iosevka"
+    ];
+  })
   (pkgs.callPackage ./derivations/feather/default.nix { })
 
   # terminal addons
@@ -88,10 +96,12 @@ with pkgs; [
   (pkgs.callPackage ./derivations/servis/default.nix { })
   (pkgs.callPackage ./derivations/servisctl/default.nix { })
   # only attempts to install if ssh keys are setup. Installs hello otherwise
-  (if builtins.pathExists /root/.ssh then
-    (pkgs.callPackage ./derivations/visdev/default.nix { })
-  else
-    hello)
+  (
+    if builtins.pathExists /root/.ssh then
+      (pkgs.callPackage ./derivations/visdev/default.nix { })
+    else
+      hello
+  )
 
   (pkgs.callPackage ./derivations/tigerjython/default.nix { })
 ]
