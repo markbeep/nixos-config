@@ -56,6 +56,11 @@ if status is-interactive
         echo -n $argv | base64
     end
 
+    function flakeinit -d "Init flake template"
+        nix flake init --template github:the-nix-way/dev-templates#$argv
+    end
+    abbr fi flakeinit
+
     # quickly creates a basic shell.nix and .envrc in the local directory
     alias s='echo "\
 with import <unstable> {};
