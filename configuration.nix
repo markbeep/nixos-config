@@ -82,6 +82,11 @@
       ];
     };
 
+    # Increase acceleration
+    displayManager.sessionCommands = ''
+      ${pkgs.xorg.xinput} set-prop "SYNA1D31:00 06CB:CD48 Touchpad" "libinput Accel Speed" 0.3
+    '';
+
     videoDrivers = [ "nvidia" "intel" ];
 
     # Configure keymap in X11
@@ -89,13 +94,19 @@
     xkb.options = "grp:alt_space_toggle";
   };
 
-  hardware.nvidia = {
-    prime = {
-      sync.enable = true;
+  # Enable touchpad support
+  services.libinput.enable = true;
 
-      intelBusId = "PCI:0:2:0";
-      nvidiaBusId = "PCI:1:0:0";
-    };
+  boot.extraModulePackages = [ config.boot.kernelPackages.nvidiaPackages.stable ];
+
+  hardware.nvidia = {
+    # Disabled as it makes everything try to use nouveau for some reason
+    # prime = {
+    #   sync.enable = true;
+    #
+    #   intelBusId = "PCI:0:2:0";
+    #   nvidiaBusId = "PCI:1:0:0";
+    # };
 
     modesetting.enable = true;
     # Nvidia power management. Experimental, and can cause sleep/suspend to fail.
@@ -113,11 +124,8 @@
   };
 
   # Enable OpenGL
-  hardware.opengl = {
-    enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
-  };
+  hardware.graphics.enable = true;
+  hardware.graphics.enable32Bit = true;
 
   # Enable i3blocks to find the correct /etc
   environment.pathsToLink = [ "/libexec" ];
@@ -129,7 +137,6 @@
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -138,13 +145,6 @@
     alsa.support32Bit = true;
     pulse.enable = true;
   };
-
-  # Enable touchpad support
-  services.xserver.libinput.enable = true;
-  # Increase acceleration
-  services.xserver.displayManager.sessionCommands = ''
-    ${pkgs.xorg.xinput} set-prop "SYNA1D31:00 06CB:CD48 Touchpad" "libinput Accel Speed" 0.3
-  '';
 
   # enable signed commits in git
   services.pcscd.enable = true;
@@ -187,7 +187,7 @@
 
     # credentials
     libsecret
-    gnome.gnome-keyring
+    gnome-keyring
     libgnome-keyring
 
     powertop # optimizes battery usage
