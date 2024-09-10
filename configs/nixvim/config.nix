@@ -106,7 +106,7 @@
     barbar.enable = true;
     lualine = {
       enable = true;
-      theme = "palenight";
+      settings.options.theme = "palenight";
     };
 
     # Languages
@@ -128,8 +128,8 @@
       src = pkgs.fetchFromGitHub {
         owner = "danielfalk";
         repo = "smart-open.nvim";
-        rev = "3cff486c7074a23c92339a8916ebe42bb0ffd2bf";
-        hash = "sha256-N0lDSYiHY6+IQ2AJ3dxZlNqgan49y/yw050LvvMrZdM=";
+        rev = "f4e39e9a1b05a6b82b1182a013677acc44b27abb";
+        hash = "sha256-bEo5p7tHeoE13P8QsjC8RqNA0NMogjdYzN0oatQaIJY=";
       };
     })
   ];
@@ -140,6 +140,7 @@
   '';
 
   extraConfigVim = ''
+    let g:sqlite_clib_path = '${pkgs.sqlite.out}/lib/libsqlite3.so'
     ${(builtins.readFile ./keymaps/neoformat.vim)}
   '';
 

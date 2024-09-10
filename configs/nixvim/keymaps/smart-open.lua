@@ -1,10 +1,9 @@
 local telescope = require("telescope")
 
 vim.keymap.set("n", "<leader>pf", function ()
-  require("telescope").extensions.smart_open.smart_open({
+  telescope.extensions.smart_open.smart_open({
     filename_first = true,
   })
-
 end, { noremap = true, silent = true })
 
 telescope.setup {

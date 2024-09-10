@@ -95,7 +95,10 @@
   };
 
   # Enable touchpad support
-  services.libinput.enable = true;
+  services.libinput = {
+    enable = true;
+    mouse.accelSpeed = "0.2";
+  };
 
   boot.extraModulePackages = [ config.boot.kernelPackages.nvidiaPackages.stable ];
 
