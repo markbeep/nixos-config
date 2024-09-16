@@ -71,6 +71,9 @@
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
 
+  # Missing in current nixpkgs version. Will be added
+  # services.displayManager.ly.enable = true;
+
   # Enable the i3 window manager 
   services.xserver = {
     enable = true;
@@ -95,8 +98,8 @@
     '';
 
     videoDrivers = [
-      "nvidia"
       "intel"
+      "nvidia"
     ];
 
     # Configure keymap in X11
@@ -111,12 +114,12 @@
   };
 
   hardware.nvidia = {
-    prime = {
-      sync.enable = true;
-
-      intelBusId = "PCI:0:2:0";
-      nvidiaBusId = "PCI:1:0:0";
-    };
+    # prime = {
+    #   sync.enable = true;
+    #
+    #   intelBusId = "PCI:0:2:0";
+    #   nvidiaBusId = "PCI:1:0:0";
+    # };
 
     modesetting.enable = true;
     # Nvidia power management. Experimental, and can cause sleep/suspend to fail.
@@ -137,10 +140,10 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # Enable OpenGL
-  hardware.graphics = {
+  hardware.opengl = {
     enable = true;
-    enable32Bit = true;
-    extraPackages = [ pkgs.mesa.drivers ];
+    driSupport = true;
+    driSupport32Bit = true;
   };
 
   # Enable i3blocks to find the correct /etc
@@ -205,7 +208,7 @@
 
     # credentials
     libsecret
-    gnome-keyring
+    gnome.gnome-keyring
     libgnome-keyring
 
     # signed git commits

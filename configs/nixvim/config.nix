@@ -106,7 +106,7 @@
     barbar.enable = true;
     lualine = {
       enable = true;
-      settings.options.theme = "palenight";
+      # settings.options.theme = "palenight";
     };
 
     # Languages
