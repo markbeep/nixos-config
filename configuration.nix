@@ -100,16 +100,14 @@
     mouse.accelSpeed = "0.2";
   };
 
-  boot.extraModulePackages = [ config.boot.kernelPackages.nvidiaPackages.stable ];
 
   hardware.nvidia = {
-    # Disabled as it makes everything try to use nouveau for some reason
-    # prime = {
-    #   sync.enable = true;
-    #
-    #   intelBusId = "PCI:0:2:0";
-    #   nvidiaBusId = "PCI:1:0:0";
-    # };
+    prime = {
+      sync.enable = true;
+
+      intelBusId = "PCI:0:2:0";
+      nvidiaBusId = "PCI:1:0:0";
+    };
 
     modesetting.enable = true;
     # Nvidia power management. Experimental, and can cause sleep/suspend to fail.
@@ -123,12 +121,14 @@
     # Enable the Nvidia settings menu,
     # accessible via `nvidia-settings`.
     nvidiaSettings = true;
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 
   # Enable OpenGL
-  hardware.graphics.enable = true;
-  hardware.graphics.enable32Bit = true;
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+    extraPackages = [ pkgs.mesa.drivers ];
+  };
 
   # Enable i3blocks to find the correct /etc
   environment.pathsToLink = [ "/libexec" ];

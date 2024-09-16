@@ -15,7 +15,7 @@
 
   outputs = { nixpkgs, home-manager, nixvim, ... }: {
     nixosConfigurations = {
-      mark = nixpkgs.lib.nixosSystem rec {
+      mark = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
           ./configuration.nix
