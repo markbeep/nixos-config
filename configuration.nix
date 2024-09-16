@@ -1,4 +1,5 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, ... }:
+{
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -8,7 +9,10 @@
   users.users.mark = {
     isNormalUser = true;
     description = "Mark";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
     shell = pkgs.fish;
   };
 
@@ -18,7 +22,10 @@
   nixpkgs.config.permittedInsecurePackages = [ "electron-25.9.0" ];
 
   # enable flakes
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   # reduce file size used & automatic garbage collector
   nix.settings.auto-optimise-store = true;
@@ -87,7 +94,10 @@
       ${pkgs.xorg.xinput} set-prop "SYNA1D31:00 06CB:CD48 Touchpad" "libinput Accel Speed" 0.3
     '';
 
-    videoDrivers = [ "nvidia" "intel" ];
+    videoDrivers = [
+      "nvidia"
+      "intel"
+    ];
 
     # Configure keymap in X11
     xkb.layout = "ch,us";
@@ -99,7 +109,6 @@
     enable = true;
     mouse.accelSpeed = "0.2";
   };
-
 
   hardware.nvidia = {
     prime = {
@@ -121,7 +130,11 @@
     # Enable the Nvidia settings menu,
     # accessible via `nvidia-settings`.
     nvidiaSettings = true;
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
+
+  boot.extraModulePackages = [ config.boot.kernelPackages.nvidiaPackages.stable ];
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # Enable OpenGL
   hardware.graphics = {
@@ -182,6 +195,8 @@
     # terminal
     fish
     kitty
+    st
+    mesa-demos
 
     # developing
     git
@@ -192,8 +207,6 @@
     libsecret
     gnome-keyring
     libgnome-keyring
-
-    powertop # optimizes battery usage
 
     # signed git commits
     gnupg
@@ -221,12 +234,35 @@
   fileSystems."/mnt/vseth" = {
     device = "//nas22.ethz.ch/eth_vseth_nas_2";
     fsType = "cifs";
-    options = [ "username=mcsurgay" "domain=d.ethz.ch,noauto,user" "vers=3.0" ];
+    options = [
+      "username=mcsurgay"
+      "domain=d.ethz.ch,noauto,user"
+      "vers=3.0"
+    ];
   };
 
   zramSwap.enable = true;
 
-  powerManagement.powertop.enable = true;
+  services.tlp = {
+    enable = true;
+    settings = {
+      CPU_SCALING_GOVERNOR_ON_AC = "performance";
+      CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+
+      CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
+      CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
+
+      CPU_MIN_PERF_ON_AC = 0;
+      CPU_MAX_PERF_ON_AC = 100;
+      CPU_MIN_PERF_ON_BAT = 0;
+      CPU_MAX_PERF_ON_BAT = 60;
+
+      #Optional helps save long term battery health
+      START_CHARGE_THRESH_BAT0 = 40; # 40 and bellow it starts to charge
+      STOP_CHARGE_THRESH_BAT0 = 80; # 80 and above it stops charging
+
+    };
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

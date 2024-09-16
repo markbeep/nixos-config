@@ -122,7 +122,17 @@
     tint-nvim
     neoformat
     nvim-spectre
-    sqlite-lua # required for smart-open
+    # manually build sqlite.lua, since the vimPlugins.sqlite-lua has a syntax error
+    # sqlite.lua is required for smart-open
+    (pkgs.vimUtils.buildVimPlugin {
+      name = "sqlite.lua";
+      src = pkgs.fetchFromGitHub {
+        owner = "kkharji";
+        repo = "sqlite.lua";
+        rev = "v1.2.2";
+        hash = "sha256-NUjZkFawhUD0oI3pDh/XmVwtcYyPqa+TtVbl3k13cTI=";
+      };
+    })
     (pkgs.vimUtils.buildVimPlugin {
       name = "smart-open";
       src = pkgs.fetchFromGitHub {

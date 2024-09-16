@@ -1,6 +1,5 @@
 {
   imports = [
-    ./alacritty
     ./discord
     ./dunst
     ./fish
