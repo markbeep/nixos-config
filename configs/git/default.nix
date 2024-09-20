@@ -12,5 +12,8 @@
       ph = "push";
       f = "fetch --all";
     };
+    extraConfig = {
+      init.defaultBranch = "main";
+    };
   };
 }
