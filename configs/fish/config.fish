@@ -3,12 +3,12 @@ if status is-interactive
     alias h='hx .'
     # quickly enters nvim in the context of the config
     alias c='fish -c "cd ~/nixos-config; nvim ."'
-    
+
     abbr dup 'docker compose up --build'
     abbr ddown 'docker compose down'
     abbr duw 'docker compose watch --no-up & docker compose up --build'
-    abbr d 'docker'
-    
+    abbr d docker
+
     # makes nixos-rebuild use the custom configuration
     # abbr nrs "sudo nixos-rebuild switch --flake /home/mark/nixos-config#mark"
     # abbr nrt "sudo nixos-rebuild test --flake /home/mark/nixos-config#mark"
@@ -18,15 +18,15 @@ if status is-interactive
 
     abbr sr "sudo reboot now"
     abbr sn "sudo shutdown now"
-    abbr g "git"
+    abbr g git
 
     # VIS kubectl commands
-    abbr kb "kubectl"
+    abbr kb kubectl
     abbr kbs "kubectl -n vis-cat-staging"
     abbr kbp "kubectl -n vis-cat-prod"
 
     abbr yd "yarn dev"
-    abbr yi "yarn"
+    abbr yi yarn
     abbr nd "npm run dev"
     abbr ni "npm i"
 
@@ -42,7 +42,7 @@ if status is-interactive
     starship init fish | source
 
     kubectl completion fish | source
-    sipctl completion fish | source 
+    sipctl completion fish | source
 
     set -gx PATH $PATH $HOME/.krew/bin
 
@@ -63,6 +63,13 @@ if status is-interactive
 
     function shell -d "Nix Shell"
         nix shell nixpkgs#$argv
+    end
+
+    function tmp -d "Create a temp file and open it in vim"
+        set tmpfile (mktemp /tmp/tmp.XXXXXXX.$argv)
+        vim $tmpfile
+        set_color green
+        echo $tmpfile
     end
 
     # quickly creates a basic shell.nix and .envrc in the local directory
@@ -89,10 +96,9 @@ stdenv.mkDerivation {
   dontBuild = true;
   nativeBuildInputs = [autoPatchelfHook];
   installPhase = \"install -Dm755 \$src \$out/bin/exe\";
-}" > build.nix
+}" >build.nix
         nix-build -E "with import <unstable> {}; callPackage ./build.nix {}"
 
     end
 
 end
-
