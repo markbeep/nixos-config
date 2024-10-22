@@ -97,10 +97,10 @@
       ${pkgs.xorg.xinput} set-prop "SYNA1D31:00 06CB:CD48 Touchpad" "libinput Accel Speed" 0.3
     '';
 
-    videoDrivers = [
-      "intel"
-      "nvidia"
-    ];
+    # videoDrivers = [
+    #   "intel"
+    #   "nvidia"
+    # ];
 
     # Configure keymap in X11
     xkb.layout = "ch,us";
@@ -114,12 +114,12 @@
   };
 
   hardware.nvidia = {
-    # prime = {
-    #   sync.enable = true;
-    #
-    #   intelBusId = "PCI:0:2:0";
-    #   nvidiaBusId = "PCI:1:0:0";
-    # };
+    prime = {
+      sync.enable = true;
+
+      intelBusId = "PCI:0:2:0";
+      nvidiaBusId = "PCI:1:0:0";
+    };
 
     modesetting.enable = true;
     # Nvidia power management. Experimental, and can cause sleep/suspend to fail.
@@ -137,12 +137,11 @@
   };
 
   boot.extraModulePackages = [ config.boot.kernelPackages.nvidiaPackages.stable ];
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  # boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # Enable OpenGL
   hardware.opengl = {
     enable = true;
-    driSupport = true;
     driSupport32Bit = true;
   };
 
@@ -156,7 +155,6 @@
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  sound.enable = true;
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {

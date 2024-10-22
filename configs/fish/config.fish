@@ -61,6 +61,10 @@ if status is-interactive
     end
     abbr fi flakeinit
 
+    function shell -d "Nix Shell"
+        nix shell nixpkgs#$argv
+    end
+
     # quickly creates a basic shell.nix and .envrc in the local directory
     alias s='echo "\
 with import <unstable> {};

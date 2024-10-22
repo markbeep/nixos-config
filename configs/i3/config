@@ -45,7 +45,7 @@ bindsym $mod+d exec rofi -no-config -no-lazy-grab -show drun -modi drun -theme ~
 font pango:DejaVu Sans Mono 8
 
 # makes elements bigger on screen
-exec xrandr --output eDP1 --dpi 140
+exec xrandr --output eDP-1 --dpi 140
 
 # custom keybinds
 bindsym $mod+b exec firefox
@@ -54,7 +54,7 @@ bindsym $mod+b exec firefox
 exec xinput set-prop "SYNA1D31:00 06CB:CD48 Touchpad" "libinput Click Method Enabled" 0 1
 
 # enables transparency
-exec_always --no-startup-id picom &
+exec_always --no-startup-id picom --backend xrender &
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex --autostart --environment i3
