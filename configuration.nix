@@ -140,9 +140,9 @@
   # boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # Enable OpenGL
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
-    driSupport32Bit = true;
+    enable32Bit = true;
   };
 
   # Enable i3blocks to find the correct /etc
@@ -207,7 +207,7 @@
 
     # credentials
     libsecret
-    gnome.gnome-keyring
+    gnome-keyring
     libgnome-keyring
 
     # signed git commits

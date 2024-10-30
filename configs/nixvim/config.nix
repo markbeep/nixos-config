@@ -40,14 +40,14 @@
     lsp = {
       enable = true;
       servers = {
-        tsserver.enable = true;
+        ts_ls.enable = true;
         tailwindcss.enable = true;
         nixd.enable = true;
         gopls.enable = true;
         zls.enable = true;
-        ruff-lsp.enable = true;
+        ruff_lsp.enable = true;
         dockerls.enable = true;
-        lua-ls.enable = true;
+        lua_ls.enable = true;
         ccls.enable = true;
       };
     };
@@ -99,7 +99,8 @@
     undotree.enable = true;
     fzf-lua.enable = true;
     copilot-vim.enable = true;
-    surround.enable = true;
+    vim-surround.enable = true;
+    web-devicons.enable = true;
 
     # Theming
     gitsigns.enable = true;

@@ -29,6 +29,7 @@ if status is-interactive
     abbr yi yarn
     abbr nd "npm run dev"
     abbr ni "npm i"
+    abbr ssh-keygen "ssh-keygen -t ed25519"
 
     abbr fuck-infoscreen1 "ssh infoscreen-1.vis.ethz.ch 'sudo systemctl restart getty@tty1.service'"
     abbr fuck-infoscreen2 "ssh infoscreen-2.vis.ethz.ch 'sudo systemctl restart getty@tty1.service'"
