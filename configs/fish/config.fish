@@ -73,6 +73,22 @@ if status is-interactive
         echo $tmpfile
     end
 
+    function yeet -d "Run a command in the background. -q/--quit to kill shell."
+        # parse args
+        set --local options (fish_opt -s q -l quit)
+        argparse $options -- $argv
+        # run command in background
+        nohup $argv &> /dev/null &
+        if set --query _flag_quit
+            disown
+            exit
+        end
+        set_color yellow
+        echo -n "Yeeted "
+        set_color normal
+        echo $argv
+    end
+
     # quickly creates a basic shell.nix and .envrc in the local directory
     alias s='echo "\
 with import <unstable> {};

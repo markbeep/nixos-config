@@ -22,7 +22,7 @@ with pkgs;
   unzip
   obsidian
   thunderbird
-  zed-editor
+  calibre
 
   # audio settings
   pulseaudio
