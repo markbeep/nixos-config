@@ -78,7 +78,7 @@ if status is-interactive
         set --local options (fish_opt -s q -l quit)
         argparse $options -- $argv
         # run command in background
-        nohup $argv &> /dev/null &
+        nohup $argv &>/dev/null &
         if set --query _flag_quit
             disown
             exit
@@ -87,6 +87,32 @@ if status is-interactive
         echo -n "Yeeted "
         set_color normal
         echo $argv
+    end
+
+    function rm-ex -d "Delete all files except the one specified"
+        set -l files (find . -not -name $argv)
+        set_color red
+        echo "Deleting:"
+        for file in $files
+            if test "$file" != "." -a "$file" != ".." -a "$file" != "$argv"
+                echo "  - $file"
+            end
+        end
+        
+        # confirm
+        set_color normal
+        read -l confirm -P "Are you sure? (Y/n) "
+
+        if test "$confirm" = n
+            echo "Operation canceled."
+            return 1
+        end
+
+        for file in $files
+            if test "$file" != "." -a "$file" != ".." -a "$file" != "$argv"
+                rm -r $file
+            end
+        end
     end
 
     # quickly creates a basic shell.nix and .envrc in the local directory
