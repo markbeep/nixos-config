@@ -1,6 +1,5 @@
 if status is-interactive
     alias v='nvim .'
-    alias h='hx .'
     # quickly enters nvim in the context of the config
     alias c='fish -c "cd ~/nixos-config; nvim ."'
 
@@ -12,9 +11,9 @@ if status is-interactive
     # makes nixos-rebuild use the custom configuration
     # abbr nrs "sudo nixos-rebuild switch --flake /home/mark/nixos-config#mark"
     # abbr nrt "sudo nixos-rebuild test --flake /home/mark/nixos-config#mark"
-    abbr ns "nh os switch /home/mark/nixos-config -H mark"
+    abbr ns "sudo nixos-rebuild switch --flake /home/mark/nixos-config#mark"
     abbr nu "nh os switch /home/mark/nixos-config -H mark -u"
-    abbr nt "nh os test /home/mark/nixos-config -H mark"
+    abbr nt "sudo nixos-rebuild test --flake /home/mark/nixos-config#mark"
 
     abbr sr "sudo reboot now"
     abbr sn "sudo shutdown now"
