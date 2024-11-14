@@ -1,4 +1,8 @@
-{ pkgs, homeDir }: {
+{ pkgs, homeDir }:
+let
+  pinned = import ./plugins.nix pkgs;
+in
+{
   enable = true;
   viAlias = true;
   vimAlias = true;
@@ -29,11 +33,13 @@
     hidden = true; # allows switching tabs without saving
   };
 
-  autoCmd = [{
-    event = [ "VimEnter" ];
-    pattern = [ "*" ];
-    command = "GitBlameDisable";
-  }];
+  autoCmd = [
+    {
+      event = [ "VimEnter" ];
+      pattern = [ "*" ];
+      command = "GitBlameDisable";
+    }
+  ];
 
   plugins = {
     # LSP
@@ -66,8 +72,11 @@
             })
           '';
         };
-        sources =
-          [ { name = "nvim_lsp"; } { name = "buffer"; } { name = "path"; } ];
+        sources = [
+          { name = "nvim_lsp"; }
+          { name = "buffer"; }
+          { name = "path"; }
+        ];
       };
     };
 
@@ -123,31 +132,14 @@
     tint-nvim
     neoformat
     nvim-spectre
-    # manually build sqlite.lua, since the vimPlugins.sqlite-lua has a syntax error
-    # sqlite.lua is required for smart-open
-    (pkgs.vimUtils.buildVimPlugin {
-      name = "sqlite.lua";
-      src = pkgs.fetchFromGitHub {
-        owner = "kkharji";
-        repo = "sqlite.lua";
-        rev = "v1.2.2";
-        hash = "sha256-NUjZkFawhUD0oI3pDh/XmVwtcYyPqa+TtVbl3k13cTI=";
-      };
-    })
-    (pkgs.vimUtils.buildVimPlugin {
-      name = "smart-open";
-      src = pkgs.fetchFromGitHub {
-        owner = "danielfalk";
-        repo = "smart-open.nvim";
-        rev = "f4e39e9a1b05a6b82b1182a013677acc44b27abb";
-        hash = "sha256-bEo5p7tHeoE13P8QsjC8RqNA0NMogjdYzN0oatQaIJY=";
-      };
-    })
+    pinned.startup
+    pinned.sqlite
+    pinned.smart-open
   ];
   extraConfigLua = ''
-    ${(builtins.readFile ./keymaps/smart-open.lua)}
-    ${(builtins.readFile ./keymaps/spectre.lua)}
-    ${(builtins.readFile ./keymaps/tint.lua)}
+    ${builtins.readFile ./keymaps/smart-open.lua}
+    ${builtins.readFile ./keymaps/spectre.lua}
+    ${builtins.readFile ./keymaps/tint.lua}
   '';
 
   extraConfigVim = ''
