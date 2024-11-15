@@ -1,4 +1,7 @@
 if status is-interactive
+    # removes fish greeting
+    set fish_greeting
+
     alias v='nvim .'
     # quickly enters nvim in the context of the config
     alias c='fish -c "cd ~/nixos-config; nvim ."'
@@ -9,8 +12,6 @@ if status is-interactive
     abbr d docker
 
     # makes nixos-rebuild use the custom configuration
-    # abbr nrs "sudo nixos-rebuild switch --flake /home/mark/nixos-config#mark"
-    # abbr nrt "sudo nixos-rebuild test --flake /home/mark/nixos-config#mark"
     abbr ns "sudo nixos-rebuild switch --flake /home/mark/nixos-config#mark"
     abbr nu "nh os switch /home/mark/nixos-config -H mark -u"
     abbr nt "sudo nixos-rebuild test --flake /home/mark/nixos-config#mark"
@@ -34,13 +35,8 @@ if status is-interactive
     abbr fuck-infoscreen2 "ssh infoscreen-2.vis.ethz.ch 'sudo systemctl restart getty@tty1.service'"
     abbr gyolo "git commit --amend --no-edit --all && git push --force-with-lease"
 
-    # removes fish greeting
-    set fish_greeting
-
     atuin init fish --disable-up-arrow | source
-
     starship init fish | source
-
     kubectl completion fish | source
     sipctl completion fish | source
 
@@ -80,7 +76,7 @@ if status is-interactive
         nohup $argv &>/dev/null &
         if set --query _flag_quit
             disown
-            exit
+            kill $KITTY_PID
         end
         set_color yellow
         echo -n "Yeeted "
@@ -113,14 +109,6 @@ if status is-interactive
             end
         end
     end
-
-    # quickly creates a basic shell.nix and .envrc in the local directory
-    alias s='echo "\
-with import <unstable> {};
-with pkgs;
-mkShell {
-  buildInputs = [];
-}" > shell.nix && echo "use nix" > .envrc'
 
     function p -d "Create and build patched nix binary"
         if test -z $argv[1]

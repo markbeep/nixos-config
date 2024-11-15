@@ -1,13 +1,4 @@
-{ lib, stdenv, fetchurl, autoPatchelfHook }:
-let
-  # downloads the checksum from the given url
-  getChecksum = url: with builtins;
-    lib.pipe (builtins.fetchurl url) [
-      readFile
-      (split " ")
-      head
-    ];
-in
+{ lib, stdenv, fetchurl, autoPatchelfHook, installShellFiles }:
 stdenv.mkDerivation {
   name = "sipctl";
   version = "0.0.1";
@@ -15,24 +6,35 @@ stdenv.mkDerivation {
   # luckily these urls stay consistent
   src = fetchurl {
     url = "https://tools.vseth.ethz.ch/sipctl/linux-amd64/sipctl";
-    sha256 = "sha256-jbP8XpjXYa5i+UUFVgkDkQ4bG42CL8q67E20u81pkHs=";
+    sha256 = "sha256-85cTZT1Sz8mxelCyah4rL7XdkSFgIbIRQmbhWXU9Mdo=";
   };
 
   dontUnpack = true;
   dontConfigure = true;
   dontBuild = true;
 
-  # required for binary to be executable
   nativeBuildInputs = [
+    # required for binary to be executable
     autoPatchelfHook
+    installShellFiles
   ];
 
   installPhase = ''
     runHook preInstall
     
     install -Dm755 $src $out/bin/sipctl
+    autoPatchelf $out/bin/sipctl
     
     runHook postInstall
+  '';
+
+  postInstall = ''
+    ls -ah $out/bin
+    
+    installShellCompletion --cmd sipctl \
+    --bash <($out/bin/sipctl completion bash) \
+    --fish <($out/bin/sipctl completion fish) \
+    --zsh <($out/bin/sipctl completion zsh)
   '';
 
   meta = with lib; {
