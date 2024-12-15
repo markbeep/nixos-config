@@ -51,7 +51,7 @@ in
         nixd.enable = true;
         gopls.enable = true;
         zls.enable = true;
-        ruff_lsp.enable = true;
+        ruff.enable = true;
         dockerls.enable = true;
         lua_ls.enable = true;
         ccls.enable = true;

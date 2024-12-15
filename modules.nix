@@ -57,13 +57,9 @@ with pkgs;
   dejavu_fonts
   open-sans
   material-icons
-  (nerdfonts.override {
-    fonts = [
-      "FiraCode"
-      "JetBrainsMono"
-      "Iosevka"
-    ];
-  })
+  nerd-fonts.fira-code
+  nerd-fonts.jetbrains-mono
+  nerd-fonts.iosevka
   (pkgs.callPackage ./derivations/feather/default.nix { })
 
   # terminal addons
