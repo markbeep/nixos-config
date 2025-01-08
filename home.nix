@@ -24,6 +24,15 @@
   # enables the fonts to be used
   fonts.fontconfig.enable = true;
 
+  # TODO: Added 01.08.2025. Look into removing/fixing properly
+  # Hot-fix for "Unit tray.target not found." preventing flameshot from launching.
+  systemd.user.targets.tray = {
+    Unit = {
+      Description = "Home Manager System Tray";
+      Requires = [ "graphical-session.target" ];
+    };
+  };
+
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
   # when a new Home Manager release introduces backwards

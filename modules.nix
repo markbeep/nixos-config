@@ -23,6 +23,7 @@ with pkgs;
   obsidian
   thunderbird
   calibre
+  tor-browser
 
   # audio settings
   pulseaudio

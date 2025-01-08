@@ -74,7 +74,7 @@
   # Missing in current nixpkgs version. Will be added
   # services.displayManager.ly.enable = true;
 
-  # Enable the i3 window manager 
+  # Enable the i3 window manager
   services.xserver = {
     enable = true;
 
@@ -92,11 +92,13 @@
       ];
     };
 
-    # Increase acceleration
+    # Increase touchpad acceleration
     displayManager.sessionCommands = ''
       ${pkgs.xorg.xinput} set-prop "SYNA1D31:00 06CB:CD48 Touchpad" "libinput Accel Speed" 0.3
     '';
 
+    # TODO:: Commented out on 24.10.2024 to fix nvidia driver not starting.
+    # This reintroduced screen-tearing and slight graphical issues.
     # videoDrivers = [
     #   "intel"
     #   "nvidia"
@@ -155,7 +157,6 @@
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -172,6 +173,7 @@
     enableSSHSupport = true;
   };
 
+  # Nix Helper. More thorough nix garbage collector
   programs.nh = {
     enable = true;
     clean.enable = false; # Also clears project envs
@@ -192,7 +194,6 @@
     i3
     file
     xfce.thunar # file manager
-    xorg.xf86videointel
 
     # terminal
     fish
