@@ -107,7 +107,6 @@ in
     oil.enable = true;
     undotree.enable = true;
     fzf-lua.enable = true;
-    copilot-vim.enable = true;
     vim-surround.enable = true;
     web-devicons.enable = true;
 

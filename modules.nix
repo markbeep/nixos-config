@@ -75,6 +75,7 @@ with pkgs;
   xdotool
   fd
   atuin
+  jq # required for parsing flake.lock to display "last updated" in polybar
 
   # theming / services
   imagemagick
