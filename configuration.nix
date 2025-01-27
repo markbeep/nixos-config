@@ -194,6 +194,8 @@
     i3
     file
     xfce.thunar # file manager
+    ranger # terminal file manager
+    xdragon # required for ranger drag'n'drop (<C-d>)
 
     # terminal
     fish

@@ -9,6 +9,7 @@
     ./i3
     ./kitty
     ./polybar
+    ./ranger
     ./rofi
     ./ssh
     # ./nixvim # handled separately in configuration.nix
