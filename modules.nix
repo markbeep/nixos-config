@@ -7,7 +7,7 @@ with pkgs;
   discord
   slack
   flameshot # screenshot
-  okular # pdf viewer
+  kdePackages.okular # pdf viewer
   nomacs # image viewer
   stremio
   vlc
@@ -90,7 +90,7 @@ with pkgs;
   # kubernetes / VIS
   kubectl
   krew # package manager for kubectl
-  (pkgs.callPackage ./derivations/sipctl/default.nix { })
+  # (pkgs.callPackage ./derivations/sipctl/default.nix { })
   (pkgs.callPackage ./derivations/servis/default.nix { })
   (pkgs.callPackage ./derivations/servisctl/default.nix { })
   # only attempts to install if ssh keys are setup. Installs hello otherwise

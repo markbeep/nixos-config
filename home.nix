@@ -10,9 +10,6 @@
   home.username = "mark";
   home.homeDirectory = "/home/mark";
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
   home.packages = import ./modules.nix {pkgs = pkgs;};
 
   # direnv
