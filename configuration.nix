@@ -5,6 +5,7 @@
     ./hardware-configuration.nix
     ./configs/nixvim
     ./configs/nvidia.nix
+    ./configs/physlock.nix
   ];
 
   users.users.mark = {
@@ -72,13 +73,14 @@
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
 
-  # services.displayManager.ly.enable = true;
+  services.displayManager.ly.enable = true;
 
   # Enable the i3 window manager
   services.xserver = {
     enable = true;
 
-    displayManager.gdm.enable = true;
+    # ly is used as the DM
+    # displayManager.gdm.enable = true;
 
     windowManager.i3 = {
       enable = true;
@@ -87,8 +89,6 @@
         i3blocks
         rofi
         polybarFull
-        betterlockscreen
-        xscreensaver # to lock screen
       ];
     };
 

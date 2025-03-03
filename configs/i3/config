@@ -88,9 +88,7 @@ workspace_auto_back_and_forth yes
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-bindsym $mod+Escape exec --no-startup-id xscreensaver-command -lock
-# lock the screen
-exec --no-startup-id xscreensaver --no-splash
+bindsym $mod+Escape exec --no-startup-id systemctl suspend
 
 # automatically loads a new wallpaper on startup
 exec_always --no-startup-id wal -s -i $background
