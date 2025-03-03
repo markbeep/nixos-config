@@ -4,6 +4,7 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ./configs/nixvim
+    ./configs/nvidia.nix
   ];
 
   users.users.mark = {
@@ -71,7 +72,6 @@
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
 
-  # Missing in current nixpkgs version. Will be added
   # services.displayManager.ly.enable = true;
 
   # Enable the i3 window manager
@@ -97,13 +97,6 @@
       ${pkgs.xorg.xinput} set-prop "SYNA1D31:00 06CB:CD48 Touchpad" "libinput Accel Speed" 0.3
     '';
 
-    # TODO:: Commented out on 24.10.2024 to fix nvidia driver not starting.
-    # This reintroduced screen-tearing and slight graphical issues.
-    # videoDrivers = [
-    #   "intel"
-    #   "nvidia"
-    # ];
-
     # Configure keymap in X11
     xkb.layout = "ch,us";
     xkb.options = "grp:alt_space_toggle";
@@ -113,38 +106,6 @@
   services.libinput = {
     enable = true;
     mouse.accelSpeed = "0.2";
-  };
-
-  hardware.nvidia = {
-    prime = {
-      sync.enable = true;
-
-      intelBusId = "PCI:0:2:0";
-      nvidiaBusId = "PCI:1:0:0";
-    };
-
-    modesetting.enable = true;
-    # Nvidia power management. Experimental, and can cause sleep/suspend to fail.
-    powerManagement.enable = false;
-    # Fine-grained power management. Turns off GPU when not in use.
-    # Experimental and only works on modern Nvidia GPUs (Turing or newer).
-    powerManagement.finegrained = false;
-    # Only available from driver 515.43.04+
-    # Currently alpha-quality/buggy, so false is currently the recommended setting.
-    open = false;
-    # Enable the Nvidia settings menu,
-    # accessible via `nvidia-settings`.
-    nvidiaSettings = true;
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
-  };
-
-  boot.extraModulePackages = [ config.boot.kernelPackages.nvidiaPackages.stable ];
-  # boot.kernelPackages = pkgs.linuxPackages_latest;
-
-  # Enable OpenGL
-  hardware.graphics = {
-    enable = true;
-    enable32Bit = true;
   };
 
   # Enable i3blocks to find the correct /etc
