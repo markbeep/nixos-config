@@ -4,7 +4,6 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ./configs/nixvim
-    ./configs/nvidia.nix
     ./configs/physlock.nix
   ];
 
@@ -74,13 +73,12 @@
   i18n.defaultLocale = "en_US.UTF-8";
 
   services.displayManager.ly.enable = true;
+  # ly is used as the DM currently
+  # services.displayManager.gdm.enable = true;
 
   # Enable the i3 window manager
   services.xserver = {
     enable = true;
-
-    # ly is used as the DM
-    # displayManager.gdm.enable = true;
 
     windowManager.i3 = {
       enable = true;
@@ -209,9 +207,10 @@
 
   zramSwap.enable = true;
 
-  services.tlp = {
-    enable = true;
-  };
+  # disabled 21.07.2025 for nixos-hardware power-profiles setting
+  # services.tlp = {
+  #   enable = true;
+  # };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
